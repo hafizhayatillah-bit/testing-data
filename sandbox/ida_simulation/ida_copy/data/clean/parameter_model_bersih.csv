@@ -1,0 +1,97 @@
+bagian,parameter,nilai,satuan,tingkat,status,sumber_catatan,nilai_num,jenis
+"A. Energi, Kondisi Lalu Lintas dan Penyusutan",harga_pertalite_per_liter,10000,Rp/liter,C,Data,Harga Pertalite per Okt 2026 (Pertamina; dari model lama). Cek ulang sebelum final.,10000.0,input
+"A. Energi, Kondisi Lalu Lintas dan Penyusutan",harga_pertalite_acuan_kontrak,10000,Rp/liter,D,Usulan,Harga Pertalite saat tarif per km kontrak kurir ditetapkan. Dasar klausul revisi.,10000.0,input
+"A. Energi, Kondisi Lalu Lintas dan Penyusutan",ambang_revisi_tarif_per_km,0.1,fraksi,D,Usulan,Usulan klausul: tarif per km direvisi bila Pertalite berubah > 10% dari acuan kontrak.,0.1,input
+"A. Energi, Kondisi Lalu Lintas dan Penyusutan",perlu_revisi_tarif_per_km,TIDAK,ya/tidak,,Rumus,Otomatis dari tiga baris di atas.,,turunan_rumus
+"A. Energi, Kondisi Lalu Lintas dan Penyusutan",faktor_penyesuaian_konsumsi,0.9,pengali,D,Perlu diuji,Muatan sembako 20-30 kg. Dikalikan bertumpuk dengan faktor macet (asumsi masih perlu diuji).,0.9,input
+"A. Energi, Kondisi Lalu Lintas dan Penyusutan",faktor_konsumsi_saat_macet,0.85,pengali,D,Perlu diuji,Saat macet km/liter turun ke 85%. Dipakai hanya bila kondisi = Macet.,0.85,input
+"A. Energi, Kondisi Lalu Lintas dan Penyusutan",kondisi_lalu_lintas,Normal,pilihan,D,Pilihan,"Normal / Macet. Memengaruhi biaya bensin DAN kecepatan (waktu per antaran), bukan hanya bensin.",,input
+"A. Energi, Kondisi Lalu Lintas dan Penyusutan",umur_ekonomis_motor_km,60000,km,D,Perlu diuji,Dipakai seragam untuk semua motor.,60000.0,input
+"A. Energi, Kondisi Lalu Lintas dan Penyusutan",nilai_sisa_motor,0.3,fraksi,D,Perlu diuji,Dipakai seragam untuk semua motor.,0.3,input
+B. Klaster Motor,faktor_pulang_pergi,2,pengali,C,Diputuskan,Biaya motor dikali 2 untuk perjalanan pulang-pergi (tanpa batching).,2.0,input
+B. Klaster Motor,klaster_acuan,A,A / B,D,Pilihan,Klaster yang ditampilkan di Ringkasan dan T6 (tornado).,,input
+C. Skema Upah Kurir,upah_dasar_per_antaran,3500,Rp/antaran,D,Hipotesis,"Contoh awal instruksi, BUKAN rekomendasi. Bensin sudah termasuk di upah (tidak ada tunjangan bensin terpisah).",3500.0,input
+C. Skema Upah Kurir,upah_per_km,1500,Rp/km,D,Hipotesis,"Dikenakan pada jarak rute SATU ARAH dari routing saat order dibuat. Contoh awal instruksi, BUKAN rekomendasi.",1500.0,input
+C. Skema Upah Kurir,tingkat_order_gagal,0.03,fraksi,D,Asumsi,Belum ada data. Persen order gagal (pelanggan tidak ada di rumah). Ganti dengan data PWA Kurir.,0.03,input
+C. Skema Upah Kurir,bayar_order_gagal_fraksi,0.5,fraksi upah,C,Diputuskan,Order gagal tetap dibayar setengah dari upah penuh (keputusan PIC).,0.5,input
+C. Skema Upah Kurir,ongkir_ditagih_saat_gagal_fraksi,0,fraksi ongkir,D,Belum diputuskan,Berapa persen ongkir tetap ditagih ke pelanggan bila order gagal. 0 = tidak ditagih (2M menanggung seluruh upah gagal).,0.0,input
+D. Tarif Ongkir,tarif_per_km_2M_lama,3000,Rp/km,D,Referensi,Tarif ongkir LAMA. Bukan lagi input model: dipakai hanya untuk mencari dead zone tarif lama.,3000.0,input
+D. Tarif Ongkir,ongkir_minimum_2M_lama,8000,Rp,D,Referensi,Ongkir minimum LAMA. Ongkir baru adalah OUTPUT model (T4).,8000.0,input
+D. Tarif Ongkir,batas_ongkir_vs_pembanding,1,rasio,C,Diputuskan,"Ongkir pelanggan tidak boleh lebih besar dari tarif GoSend/GrabExpress (1,00 = sama; 0,90 = 10% lebih murah).",1.0,input
+D. Tarif Ongkir,batas_subsidi_ongkir_per_order,0,Rp/order,D,Belum diputuskan,Maksimum subsidi 2M per order. 0 = 2M tidak boleh menalangi. Penentuan angka butuh contribution margin per order (Tugas 7).,0.0,input
+D. Tarif Ongkir,margin_2M_minimum_per_antaran,0,Rp/antaran,D,Belum diputuskan,Margin minimum kantong 2M per antaran. 0 = hanya 'tidak rugi'.,0.0,input
+D. Tarif Ongkir,pembulatan_ongkir,500,Rp,C,Diputuskan,Ongkir disarankan dibulatkan ke atas ke kelipatan ini.,500.0,input
+D. Tarif Ongkir,gosend_motor_tarif_min,7500,Rp,B,Data PIC,"GoSend motor, harga terendah yang terlihat di aplikasi (data PIC, Okt 2026).",7500.0,input
+D. Tarif Ongkir,gosend_motor_tarif_maks,15500,Rp,B,Data PIC,"GoSend motor, harga tertinggi yang terlihat. (GoSend mobil Rp35.500: tidak dipakai.)",15500.0,input
+D. Tarif Ongkir,grabexpress_tarif_min,9000,Rp,B,Data PIC,"GrabExpress, harga terendah yang terlihat di aplikasi (data PIC).",9000.0,input
+D. Tarif Ongkir,grabexpress_tarif_maks,20000,Rp,B,Data PIC,"GrabExpress, harga tertinggi yang terlihat (data PIC).",20000.0,input
+D. Tarif Ongkir,pembanding_jarak_tercakup_km,4,km,D,Asumsi,Jarak yang tercakup tarif minimum. Asumsi mengikuti pola Kemenhub (4 km pertama).,4.0,input
+D. Tarif Ongkir,jarak_tarif_maks_km,10,km,D,KONFIRMASI,Jarak perjalanan pada harga tertinggi di atas. BELUM DIKETAHUI: diasumsikan 10 km. Tarif per km diturunkan dari (maks - min) / (jarak ini - jarak tercakup). Konfirmasi ke PIC.,10.0,input
+D. Tarif Ongkir,pembanding_acuan,GoSend,pilihan,C,Diputuskan,GoSend / GrabExpress / Termurah. Ongkir 2M tidak boleh lebih besar dari pembanding terpilih.,,input
+D. Tarif Ongkir,gosend_tarif_per_km_turunan,1333.3333333333333,Rp/km,,Rumus,Diturunkan dari rentang harga (bergantung pada asumsi jarak harga maks).,1333.3333333333333,turunan_rumus
+D. Tarif Ongkir,grabexpress_tarif_per_km_turunan,1833.3333333333333,Rp/km,,Rumus,Diturunkan dari rentang harga.,1833.3333333333333,turunan_rumus
+D. Tarif Ongkir,override_pembanding_tarif_minimum,,Rp,B,Isi dari aplikasi,"Opsional: tarif minimum hasil simulasi order di aplikasi. Bila diisi, menggantikan data rentang PIC.",,input
+D. Tarif Ongkir,override_pembanding_tarif_per_km,,Rp/km,B,Isi dari aplikasi,"Opsional: tarif per km di atas jarak tercakup (dari 2 simulasi jarak berbeda). Bila diisi, menggantikan hasil turunan rentang PIC.",,input
+D. Tarif Ongkir,PEMBANDING_MINIMUM_DIPAKAI,7500,Rp,,Rumus,"Dipakai di T3, T4, T5, T6.",7500.0,turunan_rumus
+D. Tarif Ongkir,PEMBANDING_PER_KM_DIPAKAI,1333.3333333333333,Rp/km,,Rumus,"Dipakai di T3, T4, T5, T6.",1333.3333333333333,turunan_rumus
+D. Tarif Ongkir,potongan_aplikasi,0.2,fraksi,C,Data,Dasar T3 bagian C: potongan aplikasi maksimal 20% (KP 667/2022). Potongan GoSend/GrabExpress nyata belum diketahui.,0.2,input
+D. Tarif Ongkir,jarak_jemput_driver_rata2,1,km,D,Asumsi,Jarak driver pembanding menuju pengirim (tanpa muatan). Dipakai di T3 bagian C.,1.0,input
+D. Tarif Ongkir,jarak_perjalanan_dibandingkan,1,km,D,Asumsi,Jarak perjalanan yang dibandingkan di T3 bagian C.,1.0,input
+E. Biaya Cabang dan Troughput,overhead_harian_cabang,10000,Rp/hari,D,Perlu diuji,"Kemasan pengiriman, pulsa/data kurir, biaya cabang yang dibebankan ke pengiriman.",10000.0,input
+E. Biaya Cabang dan Troughput,throughput_antaran_per_hari,15,antaran/hari,C,Gate pilot,Antaran per kurir per hari. Pembagi overhead dan batas penghasilan realistis kurir.,15.0,input
+F. Target Pengahsilan dan Watu Per Antaran,wilayah_umk,Kabupaten Bekasi,pilihan,D,Pilihan,Pilih wilayah acuan UMK. Default Kab. Bekasi (Tambun). Cabang Bogor timur umumnya Kab. Bogor: ganti bila perlu.,,input
+F. Target Pengahsilan dan Watu Per Antaran,UMK Kota Bekasi 2026,5999443,Rp/bulan,C,Data,Kepgub Jabar 561.7/Kep.862-Kesra/2025; dikonfirmasi PIC (naik Rp308.691 dari 2025). Sebagian sumber menulis Rp5.992.931.,5999443.0,input
+F. Target Pengahsilan dan Watu Per Antaran,UMK Kabupaten Bekasi 2026,5938885,Rp/bulan,C,Data,"Kepgub Jabar 561.7/Kep.862-Kesra/2025; dikonfirmasi PIC (Kompas 16 Jan 2026): naik Rp380.370 / 6,84%.",5938885.0,input
+F. Target Pengahsilan dan Watu Per Antaran,UMK Kota Bogor 2026,5437203,Rp/bulan,C,Data,Kepgub Jabar 561.7/Kep.862-Kesra/2025.,5437203.0,input
+F. Target Pengahsilan dan Watu Per Antaran,UMK Kabupaten Bogor 2026,5161769,Rp/bulan,C,Data,Kepgub Jabar 561.7/Kep.862-Kesra/2025.,5161769.0,input
+F. Target Pengahsilan dan Watu Per Antaran,persen_target_dari_umk,1,fraksi,C,Diputuskan,Target penghasilan BERSIH kurir (setelah biaya motor) = UMK x persen ini. Instruksi: 'setara UMK atau lebih rendah'.,1.0,input
+F. Target Pengahsilan dan Watu Per Antaran,hari_kerja_per_bulan,26,hari,D,Asumsi,Hari kerja kurir per bulan.,26.0,input
+F. Target Pengahsilan dan Watu Per Antaran,jam_kerja_per_hari,8,jam,D,Asumsi,Jam kerja efektif per hari. Batas kapasitas antaran per hari.,8.0,input
+F. Target Pengahsilan dan Watu Per Antaran,UMK_DIPAKAI,5938885,Rp/bulan,,Rumus,UMK wilayah terpilih.,5938885.0,turunan_rumus
+F. Target Pengahsilan dan Watu Per Antaran,TARGET_BERSIH_PER_BULAN,5938885,Rp/bulan,,Rumus,Target penghasilan bersih kurir per bulan.,5938885.0,turunan_rumus
+F. Target Pengahsilan dan Watu Per Antaran,TARGET_PER_HARI,228418.65384615384,Rp/hari,,Rumus,,228418.65384615384,turunan_rumus
+F. Target Pengahsilan dan Watu Per Antaran,TARGET_PER_JAM,28552.33173076923,Rp/jam,,Rumus,Pembanding untung kurir per jam.,28552.33173076923,turunan_rumus
+F. Target Pengahsilan dan Watu Per Antaran,kecepatan_rata2_normal_km_jam,20,km/jam,D,Asumsi,Kecepatan rata-rata efektif motor di jalan Bekasi/Bogor timur kondisi normal. Ganti dengan timestamp PWA.,20.0,input
+F. Target Pengahsilan dan Watu Per Antaran,kecepatan_rata2_macet_km_jam,12,km/jam,D,Asumsi,Kecepatan rata-rata saat macet.,12.0,input
+F. Target Pengahsilan dan Watu Per Antaran,waktu_tetap_per_antaran_menit,15,menit,D,Asumsi,"Muat di cabang + parkir + serah terima + tunggu pelanggan, di luar waktu tempuh. Rata-rata MVP; ganti dengan timestamp PWA.",15.0,input
+F. Target Pengahsilan dan Watu Per Antaran,ambang_kurir_tipis,0.5,fraksi,D,Usulan,Status kurir: LAYAK bila untung/jam >= target/jam; TIPIS bila >= ambang ini x target; selain itu KURANG; RUGI bila untung <= 0.,0.5,input
+F. Target Pengahsilan dan Watu Per Antaran,KECEPATAN_DIPAKAI,20,km/jam,,Rumus,,20.0,turunan_rumus
+G. Sebaran Jarak Order,jarak_wakil_0_2_km,1,km,D,Asumsi,Jarak wakil untuk order 0-2 km.,1.0,input
+G. Sebaran Jarak Order,jarak_wakil_2_4_km,3,km,D,Asumsi,Jarak wakil untuk order 2-4 km.,3.0,input
+G. Sebaran Jarak Order,jarak_wakil_lebih_4_km,5.5,km,D,Asumsi,Jarak wakil untuk order > 4 km.,5.5,input
+G. Sebaran Jarak Order,sebaran_dekat_0_2,0.6,fraksi order,D,Skenario,Skenario Dekat: porsi order 0-2 km.,0.6,input
+G. Sebaran Jarak Order,sebaran_dekat_2_4,0.3,fraksi order,D,Skenario,Skenario Dekat: porsi order 2-4 km.,0.3,input
+G. Sebaran Jarak Order,sebaran_dekat_lebih_4,0.1,fraksi order,D,Skenario,Skenario Dekat: porsi order > 4 km.,0.1,input
+G. Sebaran Jarak Order,cek_sebaran_dekat,0.9999999999999999,harus 100%,,Cek,Jumlah tiga porsi harus 100%.,0.9999999999999999,turunan_rumus
+G. Sebaran Jarak Order,sebaran_dasar_0_2,0.4,fraksi order,D,Skenario,Skenario Dasar: porsi order 0-2 km.,0.4,input
+G. Sebaran Jarak Order,sebaran_dasar_2_4,0.4,fraksi order,D,Skenario,Skenario Dasar: porsi order 2-4 km.,0.4,input
+G. Sebaran Jarak Order,sebaran_dasar_lebih_4,0.2,fraksi order,D,Skenario,Skenario Dasar: porsi order > 4 km.,0.2,input
+G. Sebaran Jarak Order,cek_sebaran_dasar,1,harus 100%,,Cek,Jumlah tiga porsi harus 100%.,1.0,turunan_rumus
+G. Sebaran Jarak Order,sebaran_jauh_0_2,0.2,fraksi order,D,Skenario,Skenario Jauh: porsi order 0-2 km.,0.2,input
+G. Sebaran Jarak Order,sebaran_jauh_2_4,0.4,fraksi order,D,Skenario,Skenario Jauh: porsi order 2-4 km.,0.4,input
+G. Sebaran Jarak Order,sebaran_jauh_lebih_4,0.4,fraksi order,D,Skenario,Skenario Jauh: porsi order > 4 km.,0.4,input
+G. Sebaran Jarak Order,cek_sebaran_jauh,1,harus 100%,,Cek,Jumlah tiga porsi harus 100%.,1.0,turunan_rumus
+G. Sebaran Jarak Order,jarak_rata2_dekat,2.05,km,,Rumus,Jarak rata-rata skenario Dekat.,2.05,turunan_rumus
+G. Sebaran Jarak Order,jarak_rata2_dasar,2.7,km,,Rumus,Jarak rata-rata skenario Dasar.,2.7,turunan_rumus
+G. Sebaran Jarak Order,jarak_rata2_jauh,3.6000000000000005,km,,Rumus,Jarak rata-rata skenario Jauh.,3.6000000000000005,turunan_rumus
+G. Sebaran Jarak Order,skenario_jarak_dipakai,Dasar,pilihan,D,Pilihan,Dekat / Dasar / Jauh. Menentukan jarak rata-rata untuk T5 dan Ringkasan.,,input
+G. Sebaran Jarak Order,JARAK_RATA2_DIPAKAI,2.7,km,,Rumus,,2.7,turunan_rumus
+H. Sensivitas dan 3 Skenario,rentang_tornado,0.2,fraksi,D,Asumsi,Variabel digeser -/+ sebesar ini pada tornado (kecuali sebaran jarak: skenario Dekat vs Jauh).,0.2,input
+H. Sensivitas dan 3 Skenario,skn_optimis_pengali_harga_bensin,0.9,pengali,D,Skenario,Skenario Optimis: pengali harga bensin.,0.9,input
+H. Sensivitas dan 3 Skenario,skn_optimis_pengali_kmpl,1.1,pengali,D,Skenario,Skenario Optimis: pengali efisiensi km/liter.,1.1,input
+H. Sensivitas dan 3 Skenario,skn_optimis_throughput,18,antaran/hari,D,Skenario,Skenario Optimis: antaran per hari.,18.0,input
+H. Sensivitas dan 3 Skenario,skn_optimis_sebaran_jarak,Dekat,pilihan,D,Skenario,Skenario Optimis: Dekat/Dasar/Jauh.,,input
+H. Sensivitas dan 3 Skenario,skn_optimis_lalu_lintas,Normal,pilihan,D,Skenario,Skenario Optimis: Normal/Macet.,,input
+H. Sensivitas dan 3 Skenario,skn_dasar_pengali_harga_bensin,1,pengali,D,Skenario,Skenario Dasar: pengali harga bensin.,1.0,input
+H. Sensivitas dan 3 Skenario,skn_dasar_pengali_kmpl,1,pengali,D,Skenario,Skenario Dasar: pengali efisiensi km/liter.,1.0,input
+H. Sensivitas dan 3 Skenario,skn_dasar_throughput,15,antaran/hari,D,Skenario,Skenario Dasar: antaran per hari.,15.0,input
+H. Sensivitas dan 3 Skenario,skn_dasar_sebaran_jarak,Dasar,pilihan,D,Skenario,Skenario Dasar: Dekat/Dasar/Jauh.,,input
+H. Sensivitas dan 3 Skenario,skn_dasar_lalu_lintas,Normal,pilihan,D,Skenario,Skenario Dasar: Normal/Macet.,,input
+H. Sensivitas dan 3 Skenario,skn_pesimis_pengali_harga_bensin,1.1,pengali,D,Skenario,Skenario Pesimis: pengali harga bensin.,1.1,input
+H. Sensivitas dan 3 Skenario,skn_pesimis_pengali_kmpl,0.9,pengali,D,Skenario,Skenario Pesimis: pengali efisiensi km/liter.,0.9,input
+H. Sensivitas dan 3 Skenario,skn_pesimis_throughput,12,antaran/hari,D,Skenario,Skenario Pesimis: antaran per hari.,12.0,input
+H. Sensivitas dan 3 Skenario,skn_pesimis_sebaran_jarak,Jauh,pilihan,D,Skenario,Skenario Pesimis: Dekat/Dasar/Jauh.,,input
+H. Sensivitas dan 3 Skenario,skn_pesimis_lalu_lintas,Macet,pilihan,D,Skenario,Skenario Pesimis: Normal/Macet.,,input
+I. Turunan,faktor_upah_efektif,0.985,pengali,,Rumus,Rata-rata upah yang benar-benar dibayar per order terkirim/gagal = 1 - gagal x (1 - 50%).,0.985,turunan_rumus
+I. Turunan,faktor_ongkir_efektif,0.97,pengali,,Rumus,Rata-rata ongkir yang benar-benar diterima per order.,0.97,turunan_rumus
+I. Turunan,BIAYA_CABANG_PER_ANTARAN,666.6666666666666,Rp/antaran,,Rumus,Overhead cabang dibagi throughput (instruksi: Rp10.000 / 15 antaran).,666.6666666666666,turunan_rumus

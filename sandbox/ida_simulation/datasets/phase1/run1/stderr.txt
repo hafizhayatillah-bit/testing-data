@@ -1,0 +1,7 @@
+C:\Users\Hafizh Ayatillah\testing-data-scientist\sandbox\ida_simulation\ida_copy\src\synth_orders.py:37: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  tgl = tgl.where(tgl.dayofweek != 6, tgl + pd.Timedelta(days=1))
+C:\Users\Hafizh Ayatillah\testing-data-scientist\sandbox\ida_simulation\ida_copy\src\s02_assessing_cleaning.py:118: Pandas4Warning: Series.dt.dayofweek is deprecated and will be removed in a future version. Use Series.dt.day_of_week instead.
+  df["hari_minggu"] = df["ditugaskan_at"].dt.dayofweek       # 0=Senin
+C:\Users\Hafizh Ayatillah\testing-data-scientist\sandbox\ida_simulation\ida_copy\src\s04_analisis.py:245: ResourceWarning: unclosed file <_io.TextIOWrapper name='C:\\Users\\Hafizh Ayatillah\\testing-data-scientist\\sandbox\\ida_simulation\\ida_copy\\output\\tabel\\angka_kunci.json' mode='w' encoding='cp1252'>
+  json.dump(K, open(OUT_T / "angka_kunci.json", "w"), indent=1, ensure_ascii=False, default=float)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback

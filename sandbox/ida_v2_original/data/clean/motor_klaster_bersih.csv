@@ -1,0 +1,8 @@
+kode,jenis_motor,klaster,konsumsi_klaim_kmpl,sumber_konsumsi,faktor_penyesuaian,konsumsi_dipakai_kmpl,harga_bensin,energi_rp_km,perawatan_rp_km,harga_motor,penyusutan_rp_km,total_rp_km,total_macet_rp_km,bobot_armada,tingkat_keyakinan
+M1,Matic 110 cc (kelas BeAT/Scoopy),A,60.6,"Honda brosur 60,6 (detikOto). Uji full-to-full media: 55,4 (Gridoto), 58,5 (detikOto)",0.9,54.54,10000,183.35166850018337,90,19000000,221.66666666666663,495.01833516685,527.374511961,1,C (konsumsi); D (lainnya)
+M2,Matic 125 cc (kelas Vario 125),A,51.7,"Honda pengujian internal 51,7 (detikOto)",0.9,46.53,10000,214.9151085321298,95,24000000,280.0,589.9151085321298,627.8413041554468,1,C (konsumsi); D (lainnya)
+M3,Matic 150-160 cc (kelas Vario 160),B,46.9,"Honda brosur 46,9 (detikOto)",0.9,42.21,10000,236.9106846718787,105,29000000,338.3333333333333,680.244018005212,722.0517858884848,1,C (konsumsi); D (lainnya)
+M4,Matic premium 150-160 cc (kelas PCX),B,45.0,Honda brosur 45 (detikOto),0.9,40.5,10000,246.9135802469136,125,36000000,420.0,791.9135802469136,835.4865649963689,1,C (konsumsi); D (lainnya)
+M5,Bebek 110 cc (kelas Revo X),A,59.8,"Honda 59,8 (detikOto)",0.9,53.82,10000,185.8045336306206,75,18500000,215.83333333333331,476.6378669639539,509.4269023105341,1,C (konsumsi); D (lainnya)
+M6,Bebek 125 cc (kelas Supra X 125),A,57.2,"Honda 57,2 (detikOto)",0.9,51.48,10000,194.25019425019423,80,20500000,239.16666666666663,513.4168609168609,547.6963069610129,1,C (konsumsi); D (lainnya)
+M7,Manual/sport 150 cc (kelas CB150 Verza),B,49.5,"Daftar motor irit 2026 (Bisnis.com): 49,5",0.9,44.55,10000,224.46689113355777,100,26000000,303.3333333333333,627.800224466891,667.4120287845777,1,C (konsumsi); D (lainnya)

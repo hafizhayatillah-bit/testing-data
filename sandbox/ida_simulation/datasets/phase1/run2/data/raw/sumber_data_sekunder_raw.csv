@@ -1,0 +1,11 @@
+data,nilai_dipakai,sumber,catatan
+Harga Pertalite,Rp10.000 per liter,"Pertamina, diberitakan Bisnis.com (11 Jun 2026)",Cek ulang sebelum model difinalkan
+UMK 2026,Kota Bekasi Rp5.999.443; Kab. Bekasi Rp5.938.885; Kota Bogor Rp5.437.203; Kab. Bogor Rp5.161.769,Kepgub Jabar 561.7/Kep.862-Kesra/2025 (Bisnis.com 26-28 Des 2025; detik.com; dealls.com),Satu sumber menulis Kota Bekasi Rp5.992.931
+Tarif ojol Zona II,Rp2.550-2.800/km; minimum Rp10.200-11.200 (4 km pertama),"KP 667/2022 jo. KP 1001/2022 (Kompas, detik, JawaPos, Sep 2022)",Hanya referensi; bukan harga GoSend/GrabExpress
+GoSend motor / GrabExpress / GoSend mobil,Rp7.500-15.500 / Rp9.000-20.000 / Rp35.500,"Data PIC (aplikasi), Okt 2026",Jarak pada harga tertinggi belum diketahui (asumsi 10 km)
+GoSend Zona II (pendapatan driver 2022),Minimum Rp10.800-12.000; Rp1.900-2.800/km,"Bisnis.com, 11 Sep 2022","Referensi lama, tidak dipakai"
+Potongan aplikasi,Maksimal 20% (15% sewa aplikasi + 5% penunjang),"KP 667/2022, CNBC Indonesia (19 Jan 2025), IDX Channel (17 Sep 2025)",Potongan GoSend/GrabExpress nyata belum diketahui
+Konsumsi BBM klaim pabrikan,"BeAT 60,6; Vario 125 51,7; Vario 160 46,9; PCX 45; Revo X 59,8; Supra X 57,2; Verza 49,5 (km/liter)","detikOto (brosur Honda), Bisnis.com (daftar motor irit 2026)","Klaim uji pabrikan, bukan dengan muatan sembako"
+Uji konsumsi full-to-full,"BeAT 55,4; Scoopy 55,5 dan 58,5 (km/liter)","Gridoto, detikOto","Dasar faktor penyesuaian 0,90"
+"Harga motor, nilai sisa, umur ekonomis, perawatan per km",Lihat T2 dan Parameter,Asumsi tim (tingkat D),"Ganti dengan harga dealer, survei bengkel, data Ops"
+Kode pos Tambun,17510,Konfirmasi PIC (sesuai BPS untuk Tambun Selatan),

@@ -1,10 +1,3 @@
 .venv/
 __pycache__/
 .pytest_cache/
-# salinan & file asli Ida tidak dipublikasikan (repo publik)
-sandbox/ida_v2_original/
-sandbox/ida_v1_original/
-sandbox/ida_workbooks/
-sandbox/_download/
-sandbox/ida_simulation/ida_copy/
-sandbox/ida_simulation/datasets/phase1/run*/

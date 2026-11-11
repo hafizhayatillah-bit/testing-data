@@ -1,0 +1,34 @@
+kelompok,id,deskripsi,nilai,toleransi,hasil
+A rekonsiliasi,A1,"T4 grid: 80 baris x 19 kolom numerik, Python vs Excel",selisih maks 1.8e-12,1e-6,PASS
+A rekonsiliasi,A2,T4 grid: label status kurir/2M/tarif lama,100% sama,,PASS
+A rekonsiliasi,A3,Output_Tidy T4: 400 baris (5 metrik x 80 titik) cocok dengan model Python,selisih maks 1.8e-12,1e-6,PASS
+A rekonsiliasi,A4,"T6 tiga skenario x 2 klaster (ongkir min, untung, waktu, penghasilan)",selisih maks 2.3e-10,1e-3,PASS
+A rekonsiliasi,A5,"T5 target kurir: 16 baris (untung, kapasitas, antaran dibutuhkan, penghasilan)",selisih maks 0.0e+00,1e-3,PASS
+A rekonsiliasi,A6,Tornado T6: 6 variabel x 2 arah x 2 metrik dihitung ulang,selisih maks 7.0e-10,1e-3,PASS
+B invarian,B1,kantong 2M = ongkir x faktor - biaya 2M (semua titik),,,PASS
+B invarian,B2,ongkir_disarankan <= batas pembanding,,,PASS
+B invarian,B3,ongkir minimum tidak turun saat jarak naik,,,PASS
+B invarian,B4,tidak ada nilai kosong/tak hingga di grid,,,PASS
+B invarian,B5a,sebaran jarak skenario dekat berjumlah 100%,1.0000,,PASS
+B invarian,B5b,sebaran jarak skenario dasar berjumlah 100%,1.0000,,PASS
+B invarian,B5c,sebaran jarak skenario jauh berjumlah 100%,1.0000,,PASS
+B invarian,B6,"biaya motor per km klaster cocok acuan instruksi (A 519, B 700)",selisih maks Rp0.25/km,"Rp1,5/km",PASS
+B invarian,B7,"T2: 7 motor, tiap kode unik, klaster A/B saja",,,PASS
+C pembersihan,C1,jumlah baris bersih = jumlah order unik sebenarnya,3000 vs 3000,,PASS
+C pembersihan,C_jarak_rute_km,akurasi pemulihan kolom jarak_rute_km terhadap nilai sebenarnya,100.00%,">=99,9%",PASS
+C pembersihan,C_status_order,akurasi pemulihan kolom status_order terhadap nilai sebenarnya,100.00%,">=99,9%",PASS
+C pembersihan,C_kode_motor,akurasi pemulihan kolom kode_motor terhadap nilai sebenarnya,100.00%,">=99,9%",PASS
+C pembersihan,C_klaster_motor,akurasi pemulihan kolom klaster_motor terhadap nilai sebenarnya,100.00%,">=99,9%",PASS
+C pembersihan,C_kurir_id,akurasi pemulihan kolom kurir_id terhadap nilai sebenarnya,100.00%,">=99,9%",PASS
+C pembersihan,C_ongkir_rp,akurasi pemulihan kolom ongkir_rp terhadap nilai sebenarnya,100.00%,">=99,9%",PASS
+C pembersihan,C_pembanding_rp,akurasi pemulihan kolom pembanding_rp terhadap nilai sebenarnya,100.00%,">=99,9%",PASS
+C pembersihan,C_ditugaskan_at,akurasi pemulihan ditugaskan_at (termasuk format campur & tertukar),100.00%,">=99,9%",PASS
+C pembersihan,C_berangkat_at,akurasi pemulihan berangkat_at (termasuk format campur & tertukar),100.00%,">=99,9%",PASS
+C pembersihan,C_tiba_at,akurasi pemulihan tiba_at (termasuk format campur & tertukar),100.00%,">=99,9%",PASS
+C pembersihan,C_berat,berat yang tidak diimputasi tidak berubah,100.00%; 181 baris diimputasi (ditandai),,PASS
+C pembersihan,C_berat2,galat rata-rata imputasi berat (median),4.9 kg (informasi; imputasi memang kasar),,INFO
+D data publik,D1,5 dari 10 butir data eksternal terverifikasi dengan sumber publik; sisanya asumsi/berasal dari PIC,5/10,,INFO
+E audit workbook,E1,Sheet T8_Data_dari_Ops (dirujuk Panduan dan Catatan_Perubahan no.4/29/31/34) ada di file,sheet ada: 12; T8 tidak ditemukan,,TEMUAN
+E audit workbook,E2,ongkir_disarankan kelipatan Rp500 (parameter pembulatan_ongkir),32 dari 80 baris tidak kelipatan 500 (mis. 7833.33); semuanya baris yang dibatasi pembanding,,TEMUAN
+E audit workbook,E3,Parameter jarak_tarif_maks_km masih berstatus KONFIRMASI (asumsi 10 km),"hasil 2M rugi bergeser 2,25 - 5,75 km (atau >10 km) menurut asumsi",,TEMUAN
+E audit workbook,E4,"Ringkasan: angka kunci (30,4% UMK; 50 antaran/hari; rugi mulai 2,25 km) sama dengan hitungan ulang",sama,,PASS

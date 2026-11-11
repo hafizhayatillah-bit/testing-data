@@ -1,0 +1,79 @@
+{
+ "q1_rugi_mulai_km": 2.25,
+ "q1_titik_rugi_skema_baru": 32,
+ "q1_rugi_lama_km": [
+  2.5,
+  2.75
+ ],
+ "q1_kantong_3km": -1272.0,
+ "q1_kantong_5km": -2933.0,
+ "q1_kantong_8km": -3486.0,
+ "q1_kantong_10km": -3854.0,
+ "q2_dasarA_persen_umk": 0.3044,
+ "q2_dasarA_penghasilan": 1807851,
+ "q2_dasarA_per_jam": 8914,
+ "q2_dasarB_persen_umk": 0.2401,
+ "q2_target_per_jam": 28552,
+ "q2_antaran_dibutuhkan_dasarA": 50,
+ "q2_kapasitas_per_hari": 15,
+ "q2_pesimis_A_persen_umk": 0.1741,
+ "q2_optimis_A_persen_umk": 0.3345,
+ "q2_upahmaks_A_persen_umk": 0.25,
+ "q2_upah_target_2_7km": 18304,
+ "q2_ongkir_target_2_7km": 19274,
+ "q2_pembanding_2_7km": 7500,
+ "q2_gap_per_order": 11774,
+ "q2_gap_per_kurir_bulan": 4591872,
+ "q3_top_ongkir": "Sebaran jarak (Dekat vs Jauh)",
+ "q3_top_hasil": "Upah per km",
+ "q4_rugi_range": [
+  2.25,
+  5.75
+ ],
+ "q4_n_tidak_rugi": 2,
+ "q5": {
+  "O0": {
+   "kantong": -1022,
+   "subsidi": 1114,
+   "rugi": 0.6,
+   "persen_umk": 0.304,
+   "terlayani": 1.0
+  },
+  "O1": {
+   "kantong": 91,
+   "subsidi": 0,
+   "rugi": 0.0,
+   "persen_umk": 0.231,
+   "terlayani": 1.0
+  },
+  "O2": {
+   "kantong": 228,
+   "subsidi": 0,
+   "rugi": 0.0,
+   "persen_umk": 0.255,
+   "terlayani": 0.4
+  },
+  "O3": {
+   "kantong": 239,
+   "subsidi": 0,
+   "rugi": 0.0,
+   "persen_umk": 0.304,
+   "terlayani": 1.0
+  },
+  "O4": {
+   "kantong": -1022,
+   "subsidi": 1114,
+   "rugi": 0.6,
+   "persen_umk": 0.304,
+   "terlayani": 1.0
+  }
+ },
+ "q5_premi_o3": [
+  -0.2,
+  0.2,
+  0.368
+ ],
+ "q6_k_capai_target": null,
+ "q6_per_jam_k3": 17100,
+ "q6_per_jam_k1": 6356
+}

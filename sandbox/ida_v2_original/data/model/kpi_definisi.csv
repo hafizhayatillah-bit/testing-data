@@ -1,0 +1,7 @@
+kpi,definisi,rumus,satuan,kolom_sumber,catatan
+eta_rata2_menit,Rata-rata waktu dari penugasan sampai kurir tiba,AVG(tiba_at - ditugaskan_at),menit,"tiba_at, ditugaskan_at",Target model ETA; bandingkan prediksi vs aktual
+persen_order_gagal,Proporsi order gagal (pelanggan tidak ada),SUM(gagal) / COUNT(order_id),%,"gagal, order_id",Dasar tingkat_order_gagal di model biaya (asumsi 3%)
+jarak_rata2_km,Rata-rata jarak rute satu arah,AVG(jarak_rute_km),km,jarak_rute_km,Dasar sebaran jarak 40/40/20
+kantong_2m_per_order,Selisih ongkir diterima dan biaya kurir + cabang per order,SUM(ongkir_diterima - bayar_kurir - biaya_cabang_per_antaran) / COUNT(order_id),Rp/order,"ongkir_diterima_rp, bayar_kurir_rp",Negatif = 2M menombok
+persen_order_rugi_2m,Proporsi order dengan kantong 2M negatif,COUNT(kantong_2m_rp < 0) / COUNT(order_id),%,kantong_2m_rp,Indikator titik impas ongkir
+untung_kurir_per_jam,Untung bersih kurir per jam kerja (tertimbang waktu),SUM(untung_kurir_rp) / SUM(waktu_per_antaran_menit) * 60,Rp/jam,"untung_kurir_rp, waktu_per_antaran_menit",Bandingkan dengan target per jam (UMK / 26 hari / 8 jam)

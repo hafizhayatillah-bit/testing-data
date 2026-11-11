@@ -1,0 +1,23 @@
+langkah,masalah,baris_terdampak,aturan
+0 awal,jumlah baris mentah,3060,-
+1 duplikat,baris duplikat persis,60,drop_duplicates (pertahankan kemunculan pertama)
+1 duplikat,order_id ganda dengan isi berbeda (sisa),0,harus 0; bila >0 telusuri manual
+2 kategori,kode_motor tidak rapi (spasi/huruf kecil),138,strip + upper + hapus spasi
+2 kategori,kode_motor di luar M1-M7,0,harus 0; bila >0 minta master armada
+2 kategori,kurir_id format beda (k-07 vs K07),104,upper + hapus '-'
+2 kategori,label status_order tidak seragam,2309,mengandung 'gagal' -> gagal_pelanggan_tidak_ada; lainnya -> berhasil
+2 kategori,klaster_motor kosong di log,304,diturunkan dari master armada T2 (kode_motor -> klaster)
+3 tipe data,ongkir_rp berupa teks 'Rp x.xxx',465,buang non-angka lalu cast ke integer
+3 tipe data,pembanding_rp berupa teks 'Rp x.xxx',465,buang non-angka lalu cast ke integer
+4 waktu,format tanggal campuran (dd/mm/yyyy),731,parse dua format; yang gagal -> NaT
+4 waktu,timestamp tidak terbaca (NaT),0,harus 0
+4 waktu,berangkat_at & tiba_at tertukar,45,tukar kembali bila tiba < berangkat
+4 waktu,urutan event masih salah setelah perbaikan,0,ditandai; dikeluarkan dari analisis waktu bila ada
+5 jarak,jarak_rute_km kosong,110,diturunkan dari snapshot upah
+5 jarak,jarak <=0 atau > 15 km (salah ketik),23,diturunkan dari snapshot upah
+5 jarak,jarak tidak cocok dengan snapshot upah,6,diturunkan dari snapshot upah
+5 jarak,jarak masih tidak valid setelah perbaikan,0,harus 0
+6 berat,berat_total_kg kosong,181,imputasi median (11.6 kg) + berat_estimasi=True (sesuai T1 no.9)
+7 uang,bayar_kurir_rp tidak sesuai aturan (gagal=50% upah),0,ditandai saja
+8 outlier,waktu_per_antaran di luar 5-240 menit,0,"ditandai (flag_waktu_aneh), tidak dibuang"
+9 akhir,jumlah baris bersih,3000,-

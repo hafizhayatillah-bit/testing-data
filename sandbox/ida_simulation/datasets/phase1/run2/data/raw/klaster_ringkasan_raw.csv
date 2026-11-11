@@ -1,0 +1,3 @@
+klaster,rentang_cc,anggota,energi_rp_km,perawatan_rp_km,penyusutan_rp_km,total_normal_rp_km,total_macet_rp_km,total_dipakai_sesuai_kondisi_rp_km,nilai_acuan_instruksi_rp_km,selisih_vs_acuan_rp_km,tingkat
+A,110-125 cc,"M1, M2, M5, M6",194.58037622828198,85,239.16666666666666,518.7470428949487,553.0847563469983,518.7470428949487,519,-0.25295710505133684,D
+B,150-160 cc,"M3, M4, M7",236.09705201745,110,353.88888888888886,699.9859409063388,741.6501265564771,699.9859409063388,700,-0.014059093661217048,D

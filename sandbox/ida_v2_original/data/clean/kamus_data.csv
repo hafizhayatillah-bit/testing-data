@@ -1,0 +1,34 @@
+kolom,tipe,satuan,deskripsi,asal
+order_id,teks,-,ID unik order,log
+tanggal,tanggal,-,Tanggal penugasan,turunan
+jam,desimal,jam (0-24),Jam penugasan (mis. 9.5 = 09:30),turunan
+hari_minggu,integer,0=Senin..6=Minggu,Hari dalam seminggu,turunan
+cabang_id,teks,-,Kode cabang C01-C07 (dummy; kode pos asli dari master cabang IT Pusat),log
+kurir_id,teks,-,ID kurir (K01..),log
+kode_motor,teks,M1-M7,Jenis motor kurir (T2),log
+klaster_motor,teks,A/B,"A=110-125cc, B=150-160cc",master armada
+jarak_rute_km,desimal,km,Jarak rute SATU ARAH (routing API) - dasar upah per km,log
+jarak_tempuh_km,desimal,km,Jarak tempuh pulang-pergi (odometer/GPS),log
+kondisi_lalu_lintas,teks,Normal/Macet,Kondisi lalu lintas saat antar,log
+berat_total_kg,desimal,kg,Berat total barang,log / imputasi
+berat_estimasi,boolean,-,True bila berat diimputasi,turunan
+status_order,teks,berhasil/gagal_pelanggan_tidak_ada,Status akhir,log
+gagal,0/1,-,1 = gagal (pelanggan tidak ada),turunan
+upah_dasar_rp,integer,Rp,Snapshot upah dasar per antaran,log
+upah_per_km_rp,integer,Rp/km,Snapshot upah per km,log
+upah_total_rp,integer,Rp,Upah penuh = dasar + per km x jarak,log
+bayar_kurir_rp,integer,Rp,Yang dibayar ke kurir (gagal = 50% upah),log
+ongkir_rp,integer,Rp,Ongkir saat checkout (snapshot pricing engine),log
+ongkir_diterima_rp,desimal,Rp,Ongkir yang benar-benar diterima 2M (gagal = tidak ditagih),turunan
+pembanding_rp,integer,Rp,Tarif GoSend/GrabExpress pembanding,log
+energi_liter,desimal,liter,BBM terpakai (uji kecukupan upah),log
+ditugaskan_at..kembali_at,timestamp,-,5 event pengiriman (T1 no.2),log
+waktu_per_antaran_menit,desimal,menit,kembali_at - ditugaskan_at,turunan
+waktu_tempuh_satu_arah_menit,desimal,menit,tiba_at - berangkat_at,turunan
+biaya_motor_rp,desimal,Rp,Biaya motor per order = biaya/km klaster x jarak tempuh,turunan
+untung_kurir_rp,desimal,Rp,bayar_kurir - biaya_motor,turunan
+untung_kurir_per_jam_rp,desimal,Rp/jam,untung_kurir / waktu x 60,turunan
+kantong_2m_rp,desimal,Rp,ongkir_diterima - bayar_kurir - biaya cabang per antaran,turunan
+jarak_diperbaiki / ts_diperbaiki / flag_waktu_aneh / bayar_tidak_sesuai,boolean,-,Penanda hasil cleaning,turunan
+skema_upah_versi,teks,-,Versi skema upah,log
+sumber_data,teks,-,"SINTETIS_SIMULASI = data buatan, BUKAN transaksi asli",label wajib

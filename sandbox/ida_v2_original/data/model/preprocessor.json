@@ -1,0 +1,36 @@
+{
+ "median_berat": 11.6,
+ "mean": {
+  "jarak_rute_km": 2.9008904761904764,
+  "berat_total_kg": 12.597285714285714,
+  "jumlah_item": 11.008571428571429,
+  "jam": 12.039468253968254,
+  "jarak_log1p": 1.2448362010352878,
+  "berat_per_item": 1.2150942459904175
+ },
+ "std": {
+  "jarak_rute_km": 1.9055401977254094,
+  "berat_total_kg": 5.901813866801235,
+  "jumlah_item": 5.832497044037612,
+  "jam": 3.7383857971108077,
+  "jarak_log1p": 0.48661034341176623,
+  "berat_per_item": 0.40121662087687643
+ },
+ "kategori": {
+  "klaster_motor": [
+   "A",
+   "B"
+  ],
+  "cabang_id": [
+   "C01",
+   "C02",
+   "C03",
+   "C04",
+   "C05",
+   "C06",
+   "C07"
+  ]
+ },
+ "fit_pada": "train saja",
+ "n_train": 2100
+}

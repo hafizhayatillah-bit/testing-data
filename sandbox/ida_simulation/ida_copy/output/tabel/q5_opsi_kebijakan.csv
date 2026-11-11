@@ -1,0 +1,6 @@
+opsi,order_terlayani,kantong_2m_rata2,subsidi_2m_per_order,porsi_order_2m_rugi,untung_kurir_per_antaran,antaran_per_hari,penghasilan_kurir_bulan,persen_umk,catatan
+"O0 Skema sekarang (upah 3.500+1.500/km, ongkir <= pembanding)",1.0,-1022.4166666666665,1113.7499999999998,0.6000000000000001,4635.515968367277,15.0,1807851.227663238,0.3044091993132108,
+O1 Upah dibatasi amplop (2M tak rugi di semua jarak),1.0,91.33333333333321,0.0,0.0,3521.7659683672778,15.0,1373488.7276632383,0.23127047041039492,kurir menanggung: upah di >2 km lebih kecil
+O2 Radius layanan <= 2 km (skema upah sekarang),0.4,228.33333333333303,0.0,0.0,3887.505914210103,15.0,1516127.3065419402,0.2552882075578059,order >2 km tidak dilayani (60% order pada sebaran Dasar)
+O3 Ongkir fleksibel di atas pembanding (2M tak rugi),1.0,238.5833333333336,0.0,0.0,4635.515968367277,15.0,1807851.227663238,0.3044091993132108,premi vs pembanding per bucket: -20% / +20% / +37%
+O4 Subsidi 2M menutup selisih (skema sekarang),1.0,-1022.4166666666665,1113.7499999999998,0.6000000000000001,4635.515968367277,15.0,1807851.227663238,0.3044091993132108,butuh subsidi rata-rata Rp1.114/order (Rp1.113.750 per 1.000 order)

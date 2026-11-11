@@ -1,0 +1,40 @@
+dataset,kolom,peran,tipe,satuan,arti,asal,rumus,tersedia_saat_prediksi,nilai_atau_rentang
+dataset_model_order,order_id,id,teks,-,ID order unik,log,-,ya,ORD-00001..ORD-03000
+dataset_model_order,split,split,teks,-,"Pembagian data; menurut waktu: 70% order paling awal = train, sisanya test (dibekukan)",rekayasa,ditugaskan_at < batas_waktu_test ? train : test,-,train / test
+dataset_model_order,ditugaskan_at,waktu_split (bukan fitur),timestamp,WIB,Saat order ditugaskan/di-klaim kurir = saat prediksi dibuat; dipakai untuk split dan audit,log,-,ya,2026-12-01..2027-01-25
+dataset_model_order,kurir_id,id_kelompok (bukan fitur),teks,-,ID kurir; tidak dipakai sebagai fitur (kurir baru tidak punya riwayat),log,-,ya,K01..K28
+dataset_model_order,cabang_id,fitur_tambahan,kategori,-,Kode cabang (dummy; kode pos asli menunggu master cabang IT Pusat),log,-,ya,C01..C07
+dataset_model_order,klaster_motor,fitur_tambahan,kategori,-,"Klaster motor kurir (A = 110-125 cc, B = 150-160 cc)",master armada,kode_motor -> klaster,ya (setelah kurir klaim),A / B
+dataset_model_order,jarak_rute_km,fitur_inti,desimal,km,Jarak rute SATU ARAH dari cabang ke tujuan (routing API),log,-,ya,"0,3 - 8"
+dataset_model_order,berat_total_kg,fitur_inti,desimal,kg,Berat total barang. KOSONG bila tidak tercatat; diimputasi dengan median TRAIN oleh preprocessor,log,-,ya,2 - 30; kosong = berat_estimasi
+dataset_model_order,berat_estimasi,penanda,0/1,-,1 bila berat tidak tercatat (nilai diimputasi di preprocessor),turunan,berat_total_kg kosong,ya,0 / 1
+dataset_model_order,jumlah_item,fitur_inti,integer,item,"Jumlah item (baris barang) dalam pesanan. Pada data sintetis hanya berkorelasi dengan berat, tidak memengaruhi waktu",log,-,ya,1 - 37
+dataset_model_order,jam,fitur_inti,desimal,jam,"Jam penugasan (9,5 = 09:30)",turunan,jam + menit/60 dari ditugaskan_at,ya,"7 - 19,5"
+dataset_model_order,hari_minggu,fitur_inti,integer,-,Hari dalam seminggu (0 = Senin ... 5 = Sabtu; Minggu tidak ada order),turunan,dayofweek(ditugaskan_at),ya,0 - 5
+dataset_model_order,is_macet,fitur_tambahan,0/1,-,Kondisi lalu lintas macet saat antar. BERSYARAT: hanya sah jadi fitur bila ada sumber lalu lintas real-time saat prediksi,log,kondisi_lalu_lintas == Macet,bersyarat,0 / 1
+dataset_model_order,jarak_log1p,fitur_rekayasa,desimal,-,"Log jarak, meredam ekor jarak jauh",rekayasa,ln(1 + jarak_rute_km),ya,"0,26 - 2,2"
+dataset_model_order,jam_sin,fitur_rekayasa,desimal,-,Jam sebagai siklus 24 jam (komponen sin),rekayasa,sin(2*pi*jam/24),ya,-1 - 1
+dataset_model_order,jam_cos,fitur_rekayasa,desimal,-,Jam sebagai siklus 24 jam (komponen cos),rekayasa,cos(2*pi*jam/24),ya,-1 - 1
+dataset_model_order,hari_sin,fitur_rekayasa,desimal,-,Hari sebagai siklus 7 hari (sin),rekayasa,sin(2*pi*hari_minggu/7),ya,-1 - 1
+dataset_model_order,hari_cos,fitur_rekayasa,desimal,-,Hari sebagai siklus 7 hari (cos),rekayasa,cos(2*pi*hari_minggu/7),ya,-1 - 1
+dataset_model_order,is_jam_puncak,fitur_rekayasa,0/1,-,1 bila jam 07-10 atau 15-18,rekayasa,(7<=jam<10) atau (15<=jam<18),ya,0 / 1
+dataset_model_order,is_sabtu,fitur_rekayasa,0/1,-,1 bila hari Sabtu,rekayasa,hari_minggu == 5,ya,0 / 1
+dataset_model_order,kelas_jarak,fitur_rekayasa,ordinal,-,Kelas jarak sesuai bucket model biaya,rekayasa,0: <=2 km; 1: >2-4 km; 2: >4 km,ya,0 / 1 / 2
+dataset_model_order,target_eta_menit,target_regresi,desimal,menit,LABEL ETA: waktu dari order ditugaskan sampai kurir tiba di pelanggan,label,(tiba_at - ditugaskan_at) dalam menit,TIDAK (label),3 - 59
+dataset_model_order,target_gagal,target_klasifikasi,0/1,-,LABEL: 1 bila order gagal (pelanggan tidak ada),label,status_order == gagal_pelanggan_tidak_ada,TIDAK (label),0 / 1
+dataset_model_order,sumber_label,label_sumber,teks,-,Asal label (kolom dan rumus penurunan),label,-,-,teks tetap
+dataset_model_order,sumber_data,label_sumber,teks,-,"SINTETIS_SIMULASI = data buatan, BUKAN transaksi asli",label wajib,-,-,SINTETIS_SIMULASI
+permintaan_harian_cabang,tanggal,kunci,tanggal,-,Tanggal order (hari kalender),turunan,tanggal dari ditugaskan_at,ya,2026-12-01..2027-01-25
+permintaan_harian_cabang,cabang_id,kunci,kategori,-,Kode cabang,log,-,ya,C01..C07
+permintaan_harian_cabang,jumlah_order,target_forecast,integer,order/hari,"Jumlah order cabang pada hari tsb (nol bila tidak ada order, termasuk Minggu)",agregasi,COUNT(order_id) per tanggal x cabang,TIDAK (label),0 - 27
+permintaan_harian_cabang,hari_minggu,fitur,integer,-,Hari dalam seminggu (0 = Senin ... 6 = Minggu),turunan,dayofweek(tanggal),ya,0 - 6
+permintaan_harian_cabang,lag_1,fitur,desimal,order/hari,Jumlah order hari kemarin (kosong pada hari pertama),rekayasa,jumlah_order pada t-1,ya,0 - 27
+permintaan_harian_cabang,lag_7,fitur,desimal,order/hari,Jumlah order 7 hari lalu (kosong 7 hari pertama),rekayasa,jumlah_order pada t-7,ya,0 - 27
+permintaan_harian_cabang,rolling7_mean,fitur,desimal,order/hari,Rerata 7 hari SEBELUM hari ini (tidak termasuk hari ini),rekayasa,mean(jumlah_order t-7..t-1),ya,"4,9 - 11,3"
+permintaan_harian_cabang,split,split,teks,-,"70% tanggal paling awal = train, sisanya test",rekayasa,tanggal < batas ? train : test,-,train / test
+permintaan_harian_cabang,sumber_data,label_sumber,teks,-,SINTETIS_SIMULASI. Order tiba acak; satu-satunya pola mingguan adalah ARTEFAK generator: order hari Minggu dipindah ke Senin sehingga Senin sekitar 2x hari lain. Pola permintaan nyata belum ada,label wajib,-,-,SINTETIS_SIMULASI
+matriks_siap_model (keluaran preprocessor),berat_per_item,fitur_rekayasa,desimal,kg/item,"Berat dibagi jumlah item, dihitung SETELAH imputasi berat dengan median train",rekayasa,berat_total_kg(imputasi) / jumlah_item,ya,z-score
+matriks_siap_model (keluaran preprocessor),<kolom kontinu>,diskalakan,desimal,-,"jarak_rute_km, berat_total_kg, jumlah_item, jam, jarak_log1p, berat_per_item di-z-score memakai rerata & simpangan baku TRAIN",preprocessor,(x - rerata_train)/sd_train,ya,~ -3 .. 3
+matriks_siap_model (keluaran preprocessor),"klaster_motor_<A|B>, cabang_id_<C01..C07>",fitur_tambahan (one-hot),0/1,-,"One-hot; daftar kategori diambil dari TRAIN, kategori baru di test = semua nol",preprocessor,-,ya,0 / 1
+"dataset_intent (SPESIFIKASI, data belum ada)",id | teks | label | sumber_data | split,-,teks,-,id unik; teks kalimat; label 1 dari 6 kelas; sumber_data wajib; split train/test 70/30 beku; tidak ada kalimat sama (setelah normalisasi huruf kecil+spasi) di dua split,belum dibuat,-,-,menunggu 6 kelas intent
+"dataset_ulasan (SPESIFIKASI, data belum ada)",id | order_id | rating | komentar | label_sentimen | sumber_data | split,-,teks,-,ulasan hanya untuk order berstatus DELIVERED; label positif/negatif; sumber_data wajib,belum dibuat,-,-,menunggu aturan label

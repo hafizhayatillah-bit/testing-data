@@ -4,16 +4,16 @@
   "T9_Opsi_Keputusan"
  ],
  "param_baru": {
-  "margin_barang_referensi": 0.1,
-  "biaya_tetap_cabang_lain_per_hari": 0,
-  "kemasan_tambahan_per_order": 0,
-  "voucher_rata2_per_order": 0,
   "fee_service_per_order": 0,
-  "jarak_antar_drop_batch_km": 1,
-  "fee_payment_persen": 0.015,
+  "margin_barang_referensi": 0.1,
   "expected_refund_persen": 0.01,
+  "kemasan_tambahan_per_order": 0,
+  "jarak_antar_drop_batch_km": 1,
+  "voucher_rata2_per_order": 0,
+  "biaya_tetap_cabang_lain_per_hari": 0,
   "target_contribution_per_order": 0,
-  "basket_referensi": 150000
+  "basket_referensi": 150000,
+  "fee_payment_persen": 0.015
  },
  "param_berubah": {},
  "param_hilang": []

@@ -1,0 +1,20 @@
+{
+ "versi": "v1.0-sintetis",
+ "aturan_split": "menurut waktu ditugaskan_at; 70% order paling awal = train, sisanya test",
+ "batas_waktu_test": "2027-01-11 07:12:00",
+ "n_train": 2100,
+ "n_test": 900,
+ "maks_waktu_train": "2027-01-11 07:06:00",
+ "min_waktu_test": "2027-01-11 07:12:00",
+ "sha256_test_ids": "34a05a8ddfa4a4d994f42c1ce25642adb959b4690d508bb83770364106736e0f",
+ "sha256_dataset": "51b5b7cf74e71cfb8bc029f09c52b85ed668cdeb51f28e189923bad0ddcce67d",
+ "acuan_baseline": {
+  "eta_mae_prediksi_rerata_train": 6.045649735449735,
+  "eta_rmse_prediksi_rerata_train": 8.065305168894248,
+  "gagal_proporsi_train": 0.037142857142857144,
+  "gagal_proporsi_test": 0.03111111111111111,
+  "gagal_positif_train": 78,
+  "gagal_positif_test": 28
+ },
+ "catatan": "Data SINTETIS_SIMULASI. Acuan baseline hanyalah lantai pembanding (prediksi rerata), bukan model."
+}

@@ -31,6 +31,7 @@ Fase 2 dan 3 membaca output Fase 1 (`datasets/phase1/run1`), jadi jalankan Fase 
 | `tests/` | `test_audit.py` (Fase 2), `test_parity.py` (Fase 3), `conftest.py` (pencatat hasil) |
 | `ida_copy/` | Salinan pipeline Ida yang dijalankan (aslinya `../ida_v2_original/`, read-only, tidak disentuh) |
 | `datasets/` | Semua output: `phase1/run1`, `phase1/run2`, `phase1_result.json`, `phase2/*`, `phase3/*` |
-| `requirements.lock` | Versi terkunci (Python 3.12.6). `requirements.phase1.lock` = hanya dependensi Ida |
+| `requirements.lock` | Versi terkunci lengkap (Python 3.12.6). `requirements.phase1.lock` = hanya dependensi Ida |
+| `requirements.txt` | Dependensi minimal simulator, dipakai Streamlit Community Cloud |
 
 Asal file Ida: folder Google Drive `DataStash` (diunduh 11 Nov 2026), arsip + SHA-256 di `../_download/`.
