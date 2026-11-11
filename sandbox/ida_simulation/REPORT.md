@@ -108,12 +108,13 @@ Hasil: **20 PASS · 11 FAIL · 0 SKIPPED** (rincian: `datasets/phase2/audit_resu
 
 ---
 
-## Fase 3: Paritas (`tests/test_parity.py`): 7/7 PASS
+## Fase 3: Paritas (`tests/test_parity.py`): 8/8 PASS
 
 | Uji | Selisih maks | Status |
 |---|---|---|
 | costmodel vs `grid_jarak_hasil.csv` klaster A / B (39 titik × 18 kolom, termasuk kolom "bisa ditagih") | Rp0,005 (pembulatan 2 desimal CSV) | PASS |
 | costmodel vs `model_biaya.hitung()` klaster A / B | 1,8e-12 / 5,8e-10 | PASS |
+| Q3 tornado 6 variabel × 2 arah × 2 metrik | ≤ Rp1 | PASS |
 | Q4 heatmap 25 sel | 25/25 sama | PASS |
 | Q5 O0–O4 (kantong, subsidi, penghasilan, porsi rugi) | ≤ 3,4e-13 | PASS |
 | Q6 batching (Ida membulatkan ke rupiah) | Rp0,49 | PASS |
@@ -147,6 +148,7 @@ Kantong 2M per antaran, klaster A (lengkap 39 titik: `datasets/phase3/parity_tab
   | `overhead_harian_cabang` 0 / 10.000 / 20.000 (status "Perlu diuji") | 2,75 / 2,25 / 1,75 km |
   | `ongkir_ditagih_saat_gagal` 0 → 1 ("Belum diputuskan") | 2,25 → 2,5 km |
   | tarif min GoSend 7.000 / 8.000 | 2,0 / 2,5 km |
+  | tarif min GoSend ±20% (6.000 / 9.000) | 1,25 / 3,25 km, variabel paling berpengaruh ke titik rugi tapi tidak ada di tornado Q3 Ida karena tidak mengubah ongkir minimum |
   | asumsi cakupan tarif min (Q4) | 2,25–5,75 km |
 
 - Klaim Q4 "2 kombinasi tidak rugi s.d. 10 km" hanya muncul karena tarif pembanding diekstrapolasi **di atas** maksimum Rp15.500 (mis. Rp21.900 di 10 km, `model_biaya.py:49-50`). Dengan batas Rp15.500, semua 25 kombinasi rugi.

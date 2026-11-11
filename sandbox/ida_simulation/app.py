@@ -94,8 +94,8 @@ rp = lambda x: "Rp" + f"{x:,.0f}".replace(",", ".")  # noqa: E731
 st.title("Simulator ongkir, upah kurir & kantong 2M")
 st.caption("Sandbox audit pipeline DS (Ida v2). Logika: `costmodel.py` (ditulis ulang independen, paritas ≤ Rp1 vs model Ida).")
 
-t1, t2, t4, t5, t6, tinfo = st.tabs(["Q1 Titik rugi", "Q2 Kurir vs UMK", "Q4 Kekokohan asumsi", "Q5 Opsi kebijakan",
-                                     "Q6 Batching (ilustratif)", "Asumsi & sumber"])
+t1, t2, t3, t4, t5, t6, tinfo = st.tabs(["Q1 Titik rugi", "Q2 Kurir vs UMK", "Q3 Sensitivitas", "Q4 Kekokohan asumsi",
+                                         "Q5 Opsi kebijakan", "Q6 Batching (ilustratif)", "Asumsi & sumber"])
 
 # ------------------------------------------------------------------ Q1
 with t1:
@@ -150,6 +150,49 @@ with t2:
                "(dibatasi kapasitas waktu), jarak 2,05/2,7/3,6 km. Catatan audit: laporan Ida menulis '18 antaran/hari' untuk Optimis, "
                "padahal kapasitas waktu hanya 17.")
     st.dataframe(q.drop(columns=["label", "persen"]).round(3), hide_index=True)
+
+# ------------------------------------------------------------------ Q3
+with t3:
+    rentang = st.slider("Rentang perubahan tiap variabel (±%)", 5, 50, 20, step=5, key="rentang_q3") / 100
+    d0 = cm.jarak_rata2(P)
+    tor = pd.DataFrame(cm.tornado(P, d=d0, klaster=KL, rentang=rentang))
+    tor["nama"] = tor["variabel"] + tor["tambahan_audit"].map({True: " *", False: ""})
+    st.markdown(f"Satu variabel digeser **±{rentang:.0%}**, variabel lain tetap. Titik acuan: jarak rata-rata **{d0:.2f} km** "
+                f"(dari sebaran di sidebar), klaster {KL}. Sebaran jarak: kiri = skenario Dekat (60/30/10), kanan = Jauh (20/40/40). "
+                "Tanda * = variabel tambahan audit, tidak ada di tornado Ida.")
+
+    def tornado_chart(kol_minus, kol_plus, judul, fmt):
+        t = tor.assign(swing=(tor[kol_plus] - tor[kol_minus]).abs()).sort_values("swing", ascending=False)
+        long = t.melt(id_vars=["nama", "swing"], value_vars=[kol_minus, kol_plus], var_name="arah", value_name="delta")
+        long["arah"] = long["arah"].map({kol_minus: "variabel turun / Dekat", kol_plus: "variabel naik / Jauh"})
+        return alt.Chart(long).mark_bar().encode(
+            y=alt.Y("nama:N", sort=list(t["nama"]), title=None), x=alt.X("delta:Q", title=judul),
+            color=alt.Color("arah:N", scale=alt.Scale(range=["#1f5fa8", "#e08a1e"]), legend=alt.Legend(orient="bottom", title=None)),
+            tooltip=["nama", "arah", alt.Tooltip("delta:Q", format=fmt)]).properties(height=300)
+
+    c1, c2 = st.columns(2)
+    c1.altair_chart(tornado_chart("d_ongkir_minus", "d_ongkir_plus", "Perubahan ongkir minimum (Rp/order)", ",.0f")
+                    .properties(title="Ongkir minimum agar 2M tidak rugi" + TAG), width="stretch")
+    c2.altair_chart(tornado_chart("d_hasil_minus", "d_hasil_plus", "Perubahan penghasilan kurir (Rp/bulan)", ",.0f")
+                    .properties(title="Penghasilan bersih kurir per bulan" + TAG), width="stretch")
+
+    r0 = tor["rugi_dasar"].iloc[0]
+    rg = tor[["nama", "rugi_minus", "rugi_plus"]].copy()
+    rg["swing"] = (rg["rugi_plus"].fillna(10.25) - rg["rugi_minus"].fillna(10.25)).abs()
+    rg = rg.sort_values("swing", ascending=False)
+    seg = alt.Chart(rg.assign(a=rg.rugi_minus.fillna(10.25), b=rg.rugi_plus.fillna(10.25))).encode(y=alt.Y("nama:N", sort=list(rg["nama"]), title=None))
+    st.altair_chart((seg.mark_rule(strokeWidth=3, color="#7f8c8d").encode(x=alt.X("a:Q", title="Jarak mulai 2M rugi (km)", scale=alt.Scale(domain=[0, 10.5])), x2="b:Q")
+                     + seg.mark_point(filled=True, size=90, color="#1f5fa8").encode(x="a:Q", tooltip=["nama", "rugi_minus"])
+                     + seg.mark_point(filled=True, size=90, color="#e08a1e").encode(x="b:Q", tooltip=["nama", "rugi_plus"])
+                     + alt.Chart(pd.DataFrame({"x": [r0 or 10.25]})).mark_rule(color="red", strokeDash=[4, 4]).encode(x="x:Q"))
+                    .properties(title="Titik rugi 2M bila variabel digeser (biru = turun/Dekat, oranye = naik/Jauh)" + TAG, height=300),
+                    width="stretch")
+    top = rg.iloc[0]
+    st.write(f"Titik rugi saat ini: **{r0 if r0 else '>10'} km**. Variabel yang paling menggeser titik rugi: **{top['nama']}** "
+             f"({top['rugi_minus'] if pd.notna(top['rugi_minus']) else '>10'} → {top['rugi_plus'] if pd.notna(top['rugi_plus']) else '>10'} km). "
+             "Harga bensin dan efisiensi motor tidak mengubah ongkir minimum maupun titik rugi karena biaya motor ditanggung kurir.")
+    with st.expander("Tabel tornado"):
+        st.dataframe(tor.drop(columns=["nama"]).round(2), hide_index=True)
 
 # ------------------------------------------------------------------ Q4
 with t4:

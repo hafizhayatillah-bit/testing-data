@@ -47,6 +47,15 @@
    "test": "test_P3_q4_vs_tabel_ida"
   },
   {
+   "id": "P3b",
+   "klaim": "Q3 tornado 6 variabel x 2 arah x 2 metrik: costmodel vs q3_tornado.csv",
+   "expected": "selisih <= Rp1",
+   "aktual": "selisih maks 6.98e-10 (d_hasil_plus)",
+   "status": "PASS",
+   "catatan": "",
+   "test": "test_P3b_q3_tornado_vs_tabel_ida"
+  },
+  {
    "id": "P4",
    "klaim": "Q5 O0-O4: costmodel vs q5_opsi_kebijakan.csv",
    "expected": "selisih <= Rp1",

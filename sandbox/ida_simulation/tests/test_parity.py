@@ -94,6 +94,16 @@ def test_P3_q4_vs_tabel_ida(catat):
           "PASS" if not beda else "FAIL")
 
 
+def test_P3b_q3_tornado_vs_tabel_ida(catat):
+    t = pd.read_csv(need(RUN1 / "output/tabel/q3_tornado.csv")).set_index("variabel")
+    m = pd.DataFrame(cm.tornado(cm.IDA, tambahan_audit=False)).set_index("variabel")
+    cols = ["d_ongkir_minus", "d_ongkir_plus", "d_hasil_minus", "d_hasil_plus"]
+    md = {c: float((t.loc[m.index, c] - m[c]).abs().max()) for c in cols}
+    worst = max(md, key=md.get)
+    catat("P3b", "Q3 tornado 6 variabel x 2 arah x 2 metrik: costmodel vs q3_tornado.csv", f"selisih <= Rp{TOL:g}",
+          f"selisih maks {md[worst]:.2e} ({worst})", "PASS" if md[worst] <= TOL else "FAIL")
+
+
 def test_P4_q5_vs_tabel_ida(catat):
     t = pd.read_csv(need(RUN1 / "output/tabel/q5_opsi_kebijakan.csv"))
     t["opsi"] = t["opsi"].str.slice(0, 2)

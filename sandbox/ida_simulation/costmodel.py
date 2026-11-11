@@ -282,6 +282,56 @@ def kebutuhan_target(p: Params, d: float = 2.7, klaster: str = "A") -> dict:
                 gap_per_kurir_bulan=(ongkir_t - r["pembanding"]) * kap * p.hari_kerja)
 
 
+# ------------------------------------------------------------------ Q3 (tornado)
+SEBARAN_DEKAT = (0.6, 0.3, 0.1)
+SEBARAN_JAUH = (0.2, 0.4, 0.4)
+
+
+def jarak_rata2(p: Params, sebaran: tuple | None = None) -> float:
+    w = sebaran or p.sebaran
+    return sum(wi * di for wi, di in zip(w, p.jarak_wakil)) / sum(w)
+
+
+def _skala_kmpl(p: Params, f: float) -> Params:
+    return p.with_(armada=tuple((k, kl, kmpl * f, r, h, w) for k, kl, kmpl, r, h, w in p.armada))
+
+
+def tornado(p: Params, d: float | None = None, klaster: str = "A", rentang: float = 0.2, tambahan_audit: bool = True) -> list[dict]:
+    """Q3: geser satu variabel +/- rentang, ukur perubahan ongkir minimum (tanpa pembulatan, seperti T6 Excel),
+    penghasilan kurir/bulan, dan titik rugi 2M. Kolom 'minus' = variabel turun (sebaran: skenario Dekat)."""
+    d0 = jarak_rata2(p) if d is None else d
+
+    def ukur(pp: Params, dd: float):
+        return (ongkir_minimum(dd, pp, bulat=False), titik(dd, pp, klaster)["penghasilan_bulan"], titik_rugi(pp, klaster)["mulai"])
+
+    o0, h0, r0 = ukur(p, d0)
+    lo, hi = 1 - rentang, 1 + rentang
+    var = [
+        ("Upah dasar", p.with_(upah_dasar=p.upah_dasar * lo), p.with_(upah_dasar=p.upah_dasar * hi), d0, d0, False),
+        ("Upah per km", p.with_(upah_per_km=p.upah_per_km * lo), p.with_(upah_per_km=p.upah_per_km * hi), d0, d0, False),
+        ("Efisiensi km/liter", _skala_kmpl(p, lo), _skala_kmpl(p, hi), d0, d0, False),
+        ("Harga bensin", p.with_(harga_bensin=p.harga_bensin * lo), p.with_(harga_bensin=p.harga_bensin * hi), d0, d0, False),
+        ("Throughput (antaran/hari)", p.with_(throughput=p.throughput * lo), p.with_(throughput=p.throughput * hi), d0, d0, False),
+        ("Sebaran jarak (Dekat vs Jauh)", p, p, jarak_rata2(p, SEBARAN_DEKAT), jarak_rata2(p, SEBARAN_JAUH), False),
+    ]
+    if tambahan_audit:
+        var += [
+            ("Overhead harian cabang", p.with_(overhead_harian=p.overhead_harian * lo), p.with_(overhead_harian=p.overhead_harian * hi), d0, d0, True),
+            ("Tingkat order gagal", p.with_(p_gagal=p.p_gagal * lo), p.with_(p_gagal=p.p_gagal * hi), d0, d0, True),
+            ("Tarif pembanding minimum", p.with_(tarif_min=p.tarif_min * lo), p.with_(tarif_min=p.tarif_min * hi), d0, d0, True),
+        ]
+    out = []
+    for nama, p_lo, p_hi, d_lo, d_hi, tambahan in var:
+        a, b = ukur(p_lo, d_lo), ukur(p_hi, d_hi)
+        out.append(dict(
+            variabel=nama, tambahan_audit=tambahan,
+            d_ongkir_minus=a[0] - o0, d_ongkir_plus=b[0] - o0, swing_ongkir=abs(b[0] - a[0]),
+            d_hasil_minus=a[1] - h0, d_hasil_plus=b[1] - h0, swing_hasil=abs(b[1] - a[1]),
+            rugi_minus=a[2], rugi_plus=b[2], rugi_dasar=r0,
+        ))
+    return out
+
+
 # ------------------------------------------------------------------ Q4
 def q4(p: Params, covers=(1, 2, 3, 4, 5), dmaxs=(6, 8, 10, 12, 15), klaster: str = "A") -> list[dict]:
     base = titik_rugi(p, klaster)["mulai"]
