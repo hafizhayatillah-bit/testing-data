@@ -1,0 +1,73 @@
+{
+ "label": "DATA SINTETIS / ASUMSI, bukan data lapangan",
+ "hasil": [
+  {
+   "id": "P1-A",
+   "klaim": "costmodel vs grid_jarak_hasil.csv klaster A (39 titik x 18 kolom)",
+   "expected": "selisih <= Rp1",
+   "aktual": "selisih maks 0.0050 (upah_efektif)",
+   "status": "PASS",
+   "catatan": "CSV Ida dibulatkan 2 desimal",
+   "test": "test_P1_vs_grid_jarak_hasil[A]"
+  },
+  {
+   "id": "P1-B",
+   "klaim": "costmodel vs grid_jarak_hasil.csv klaster B (39 titik x 18 kolom)",
+   "expected": "selisih <= Rp1",
+   "aktual": "selisih maks 0.0050 (upah_efektif)",
+   "status": "PASS",
+   "catatan": "CSV Ida dibulatkan 2 desimal",
+   "test": "test_P1_vs_grid_jarak_hasil[B]"
+  },
+  {
+   "id": "P2-A",
+   "klaim": "costmodel vs model_biaya.hitung() Ida klaster A",
+   "expected": "selisih <= Rp1",
+   "aktual": "selisih maks 1.82e-12 (kantong_2m_lama)",
+   "status": "PASS",
+   "catatan": "",
+   "test": "test_P2_vs_model_biaya_ida[A]"
+  },
+  {
+   "id": "P2-B",
+   "klaim": "costmodel vs model_biaya.hitung() Ida klaster B",
+   "expected": "selisih <= Rp1",
+   "aktual": "selisih maks 5.82e-10 (penghasilan_bulan)",
+   "status": "PASS",
+   "catatan": "",
+   "test": "test_P2_vs_model_biaya_ida[B]"
+  },
+  {
+   "id": "P3",
+   "klaim": "Q4 heatmap 25 sel: costmodel vs q4_robustness_asumsi_pembanding.csv",
+   "expected": "25/25 sama",
+   "aktual": "25/25 sama []",
+   "status": "PASS",
+   "catatan": "",
+   "test": "test_P3_q4_vs_tabel_ida"
+  },
+  {
+   "id": "P4",
+   "klaim": "Q5 O0-O4: costmodel vs q5_opsi_kebijakan.csv",
+   "expected": "selisih <= Rp1",
+   "aktual": {
+    "kantong_2m_rata2": 3.410605131648481e-13,
+    "subsidi_2m_per_order": 2.2737367544323206e-13,
+    "penghasilan_kurir_bulan": 0.0,
+    "porsi_order_2m_rugi": 0.0
+   },
+   "status": "PASS",
+   "catatan": "",
+   "test": "test_P4_q5_vs_tabel_ida"
+  },
+  {
+   "id": "P5",
+   "klaim": "Q6 batching: costmodel vs q6_batching_ilustratif.csv (Ida membulatkan ke rupiah)",
+   "expected": "selisih <= Rp1",
+   "aktual": "selisih maks Rp0.488",
+   "status": "PASS",
+   "catatan": "",
+   "test": "test_P5_q6_vs_tabel_ida"
+  }
+ ]
+}

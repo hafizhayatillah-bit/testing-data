@@ -1,0 +1,14 @@
+spec,fitur_target_status,fitur_target_kolom,model_order_status,model_order_kolom
+order_id,ADA,order_id,ADA,order_id
+branch_id,BEDA NAMA,cabang_id,BEDA NAMA,cabang_id
+distance_km,BEDA NAMA,jarak_rute_km,BEDA NAMA,jarak_rute_km
+weight_kg,BEDA NAMA,berat_total_kg,BEDA NAMA,berat_total_kg
+item_count,HILANG,-,BEDA NAMA,jumlah_item
+hour,BEDA NAMA,jam,BEDA NAMA,jam
+dow,BEDA NAMA,hari_minggu,BEDA NAMA,hari_minggu
+motor_cluster,BEDA NAMA,klaster_motor,BEDA NAMA,klaster_motor
+prep_minutes,HILANG,-,HILANG,-
+travel_minutes,HILANG,-,BEDA NAMA,target_eta_menit
+total_minutes,BEDA NAMA,waktu_per_antaran_menit,HILANG,-
+source,BEDA NAMA,sumber_data,BEDA NAMA,sumber_data
+split,ADA,split,ADA,split

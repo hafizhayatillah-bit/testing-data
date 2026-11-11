@@ -1,0 +1,290 @@
+{
+ "label": "DATA SINTETIS / ASUMSI, bukan data lapangan",
+ "hasil": [
+  {
+   "id": "A01",
+   "klaim": "upah kurir = 3.500 + 1.500 x jarak_km (grid_jarak_hasil.csv)",
+   "expected": "selisih 0",
+   "aktual": "selisih maks Rp0.0000",
+   "status": "PASS",
+   "catatan": "",
+   "test": "test_A01_rumus_upah_di_grid_ida"
+  },
+  {
+   "id": "A02",
+   "klaim": "biaya motor ditanggung kurir; kantong 2M = ongkir diterima - bayar kurir - overhead/throughput",
+   "expected": "identitas berlaku; bensin tak mengubah kantong 2M",
+   "aktual": "selisih identitas maks Rp0.0132; kantong 3 km bensin 10rb=-1271.67 vs 15rb=-1271.67",
+   "status": "PASS",
+   "catatan": "kantong 2M memakai ongkir x 0,97 (order gagal 3% tidak ditagih) dan upah x 0,985 (gagal dibayar 50%)",
+   "test": "test_A02_biaya_motor_tidak_masuk_kantong_2m"
+  },
+  {
+   "id": "A03",
+   "klaim": "Q1: titik mulai rugi klaster A",
+   "expected": 2.25,
+   "aktual": 2.25,
+   "status": "PASS",
+   "catatan": "grid 0,25 km; 32/40 titik rugi",
+   "test": "test_A03_q1_titik_rugi_klaster_A"
+  },
+  {
+   "id": "A04",
+   "klaim": "Q1: rugi terus sampai 10 km",
+   "expected": "rugi di semua titik 2,25-10 km",
+   "aktual": "akhir=10.0 km, rugi terus=True",
+   "status": "PASS",
+   "catatan": "",
+   "test": "test_A04_q1_rugi_sampai_10km"
+  },
+  {
+   "id": "A05",
+   "klaim": "Q1: tarif lama (Rp3.000/km, min Rp8.000) hanya rugi di 2,50-2,75 km",
+   "expected": [
+    2.5,
+    2.75
+   ],
+   "aktual": [
+    2.5,
+    2.75
+   ],
+   "status": "PASS",
+   "catatan": "",
+   "test": "test_A05_q1_tarif_lama"
+  },
+  {
+   "id": "A06",
+   "klaim": "Q2: penghasilan kurir paling tinggi ~34% target UMK (Rp5.938.885)",
+   "expected": "34% (+/-1 poin)",
+   "aktual": "33.45% (Optimis A); Dasar A 30.44%",
+   "status": "PASS",
+   "catatan": "Optimis: throughput 18 tapi kapasitas waktu 17/hari -> laporan Ida menulis '18 antaran/hari' (salah label)",
+   "test": "test_A06_q2_penghasilan_tertinggi_34persen"
+  },
+  {
+   "id": "A07",
+   "klaim": "Q2: kapasitas ~15 antaran/hari vs ~50 yang dibutuhkan",
+   "expected": "15 vs 50",
+   "aktual": "15 vs 50",
+   "status": "PASS",
+   "catatan": "ongkir agar kurir capai UMK di 2,7 km = Rp19,274 vs pembanding Rp7,500",
+   "test": "test_A07_q2_kapasitas_vs_kebutuhan"
+  },
+  {
+   "id": "A08",
+   "klaim": "Q4: 25 kombinasi; bila tarif min mencakup >=3 km, titik rugi tetap 2,25 km",
+   "expected": "15/15 sel = 2,25",
+   "aktual": "15/15 sel = 2,25 (total 25 kombinasi)",
+   "status": "PASS",
+   "catatan": "",
+   "test": "test_A08_q4_cover_ge3_tetap_225"
+  },
+  {
+   "id": "A09",
+   "klaim": "Q4: bila tarif min mencakup 1-2 km, titik rugi bergeser sampai 5,75 km",
+   "expected": "maks 5,75",
+   "aktual": "rentang 2.25-5.75 km",
+   "status": "PASS",
+   "catatan": "",
+   "test": "test_A09_q4_cover_1_2_bergeser_575"
+  },
+  {
+   "id": "A10",
+   "klaim": "Q4: 2 kombinasi tidak rugi sampai 10 km",
+   "expected": 2,
+   "aktual": "2 [(1, 6), (2, 6)]",
+   "status": "PASS",
+   "catatan": "keduanya d_maks=6 km (pembanding naik curam); tarif di atas d_maks diekstrapolasi tanpa batas Rp15.500",
+   "test": "test_A10_q4_dua_kombinasi_tidak_rugi"
+  },
+  {
+   "id": "A11",
+   "klaim": "Q5: pada sebaran 40/40/20, O0 rugi untuk ~60% order",
+   "expected": "60%",
+   "aktual": "60.0% (jarak wakil 1/3/5,5 km); 57.2% bila jarak merata di bucket",
+   "status": "PASS",
+   "catatan": "angka 60% muncul dari penyederhanaan 1 jarak wakil per bucket; order 2,0-2,25 km sebenarnya tidak rugi",
+   "test": "test_A11_q5_O0_rugi_60persen"
+  },
+  {
+   "id": "A12",
+   "klaim": "Q5: O2 (radius <=2 km) melayani ~40% order",
+   "expected": "40%",
+   "aktual": "40%",
+   "status": "PASS",
+   "catatan": "",
+   "test": "test_A12_q5_O2_melayani_40persen"
+  },
+  {
+   "id": "A13",
+   "klaim": "Parameter (kecepatan 20/12, waktu tetap 15, bayar gagal 50%, throughput 15, tarif lama 3.000/8.000, UMK)",
+   "expected": "semua sama",
+   "aktual": "semua sama",
+   "status": "PASS",
+   "catatan": "",
+   "test": "test_A13_parameter_sesuai_brief"
+  },
+  {
+   "id": "A14",
+   "klaim": "(uji tambahan) Q1 tetap 2,25 km bila ongkir dibulatkan ke bawah ke kelipatan Rp500 (harga yang bisa ditagih)",
+   "expected": 2.25,
+   "aktual": 2.25,
+   "status": "PASS",
+   "catatan": "Ida memakai batas pembanding tak dibulatkan (mis. Rp7.833,33) untuk angka utama; temuan E2 miliknya sendiri",
+   "test": "test_A14_q1_bila_ongkir_bisa_ditagih"
+  },
+  {
+   "id": "B01",
+   "klaim": "Kecurigaan: generator V2 tidak punya efek berat (koef waktu~berat ~ 0)",
+   "expected": "|t| < 2",
+   "aktual": "koef berat +0.0072 menit/kg (SE 0.0181, t=0.40), kontrol jarak & macet; n=2819",
+   "status": "PASS",
+   "catatan": "synth_orders.py:51 membuat `berat` tapi tidak dipakai di rumus waktu (baris 48-59) -> efek berat mustahil dipelajari",
+   "test": "test_B01_berat_tidak_berefek_di_V2"
+  },
+  {
+   "id": "B02",
+   "klaim": "Pembanding V1: apakah V1 punya efek berat?",
+   "expected": "koef > 0 bermakna",
+   "aktual": "koef berat +0.3298 menit/kg (SE 0.0108, t=30.6); n=1480",
+   "status": "PASS",
+   "catatan": "V1 & V2 punya mekanisme berat berbeda: model ETA dari V2 tidak bisa menangkap 'muatan bulk' yang jadi alasan proyek ETA di README V1",
+   "test": "test_B02_berat_berefek_di_V1"
+  },
+  {
+   "id": "B03",
+   "klaim": "ETA: ML mengalahkan baseline jarak/kecepatan (rumus parameter: 2d/v x 60 + 15)",
+   "expected": "dR2 >= 0,02 atau MAE turun >= 5%",
+   "aktual": "GBR R2=0.9069 MAE=3.576 | baseline R2=0.877 MAE=4.434",
+   "status": "PASS",
+   "catatan": "split berbasis waktu (kolom split Ida, 80/20; train maks < test min)",
+   "test": "test_B03_ml_vs_baseline_rumus"
+  },
+  {
+   "id": "B04",
+   "klaim": "ETA: ML mengalahkan baseline jarak/kecepatan yang dikalibrasi (regresi 1 fitur)",
+   "expected": "dR2 >= 0,02 atau MAE turun >= 5%",
+   "aktual": "GBR R2=0.9069 MAE=3.576 | LinReg semua fitur R2=0.8455 | baseline kalibrasi R2=0.9074 MAE=3.582",
+   "status": "FAIL",
+   "catatan": "keunggulan ML atas rumus hanya berasal dari kalibrasi konstanta, bukan pola baru",
+   "test": "test_B04_ml_vs_baseline_kalibrasi"
+  },
+  {
+   "id": "B05",
+   "klaim": "ETA tidak sirkular (skor bukan sekadar membalik rumus generator)",
+   "expected": "ML jauh dari plafon derau generator",
+   "aktual": "GBR R2=0.9069 vs plafon generator R2=0.9074 (selisih 0.0005); MAE 3.576 vs 3.578",
+   "status": "FAIL",
+   "catatan": "target = fungsi jarak, macet + derau U(2,8)+U(3,10)+lognormal(0,0.15); skor R2~0,91 adalah batas derau, bukan kualitas model. Ida sendiri mengakui ini di docs/03 ('mudah ditebak')",
+   "test": "test_B05_eta_sirkular_mentok_plafon"
+  },
+  {
+   "id": "B06",
+   "klaim": "ETA (data/model, target = tiba - ditugaskan, split 70/30): ML > baseline kalibrasi",
+   "expected": "dR2 >= 0,02",
+   "aktual": "GBR R2=0.8909 | baseline jarak/v R2=0.8947 | plafon generator R2=0.8952",
+   "status": "FAIL",
+   "catatan": "181 berat NaN di file model diisi median 11.6 dari preprocessor.json; jumlah_item tidak ada di generator",
+   "test": "test_B06_eta_data_model_target_tiba"
+  },
+  {
+   "id": "B07",
+   "klaim": "Cek C (akurasi cleaning 100%) adalah bukti independen",
+   "expected": "kunci jawaban dari sumber independen",
+   "aktual": "kunci = output generator yang sama; s05 membandingkan dgn order_log_sintetis_kebenaran_uji.csv; synth_orders menulis file itu dari `truth` generator yang sama; kerusakan disuntik oleh inject_mess() di file yang sama; jarak dipulihkan dari upah_total yang dihitung dari jarak asli",
+   "status": "FAIL",
+   "catatan": "s05_cek_akurasi.py:103-104; synth_orders.py:86,131; s02:88. 100% hanya membuktikan aturan cleaning = kebalikan inject_mess. Ida mengakui ini di docs/04 ('Peringatan jujur')",
+   "test": "test_B07_cek_C_tautologis"
+  },
+  {
+   "id": "B08",
+   "klaim": "Kelas positif `gagal` di test >= 30 (metrik klasifikasi stabil)",
+   "expected": ">= 30",
+   "aktual": "dataset_fitur_target: train=91 test=15; data/model: train=78 test=28",
+   "status": "FAIL",
+   "catatan": "TIDAK STABIL: recall/precision bergeser 3-7 poin per 1 order salah prediksi",
+   "test": "test_B08_positif_gagal_test"
+  },
+  {
+   "id": "B09",
+   "klaim": "Tidak ada kolom turunan finansial di file fitur",
+   "expected": "0 kolom",
+   "aktual": "0 kolom",
+   "status": "PASS",
+   "catatan": "`gagal` ada di dataset_fitur_target sebagai TARGET klasifikasi (docs/03), bukan fitur ETA -> aman bila dipakai sesuai panduan; tapi file tidak memisahkan fitur vs target secara eksplisit",
+   "test": "test_B09_tidak_ada_bocoran_keuangan"
+  },
+  {
+   "id": "B10",
+   "klaim": "Baris flag_waktu_aneh yang dibuang sebelum split tidak mengubah distribusi test",
+   "expected": "0 baris terbuang",
+   "aktual": "0 baris dibuang; split berbasis waktu=True (2400/600)",
+   "status": "PASS",
+   "catatan": "s02:146 filter dilakukan SEBELUM kuantil waktu (s02:149); pada log asli ini akan menggeser batas split",
+   "test": "test_B10_flag_waktu_aneh_sebelum_split"
+  },
+  {
+   "id": "B11",
+   "klaim": "dataset_fitur_target.csv sesuai spec WP-45 (13 kolom)",
+   "expected": "13/13 ADA",
+   "aktual": "2 ADA persis, 8 beda nama, hilang: ['item_count', 'prep_minutes', 'travel_minutes']",
+   "status": "FAIL",
+   "catatan": "tabel lengkap: datasets/phase2/wp45_kolom.csv",
+   "test": "test_B11_kolom_wp45"
+  },
+  {
+   "id": "B12",
+   "klaim": "V1 punya kolom sumber_data / label sintetis",
+   "expected": "ada",
+   "aktual": "tidak ada; kolom=['order_id', 'jam_order', 'jarak_km', 'berat_kg', 'waktu_tempuh_menit', 'is_rush_hour', 'is_heavy']",
+   "status": "FAIL",
+   "catatan": "nama file V1 juga tidak mengandung 'sintetis' (melanggar aturan label di README V2)",
+   "test": "test_B12_v1_berlabel_sintetis"
+  },
+  {
+   "id": "B13",
+   "klaim": "Pipeline memakai workbook terbaru (v2.2)",
+   "expected": "config.XLSX = v2.2",
+   "aktual": "pipeline membaca v2 (config.py:10). v2.2: +10 parameter baru ['basket_referensi', 'biaya_tetap_cabang_lain_per_hari', 'expected_refund_persen', 'fee_payment_persen', 'fee_service_per_order', 'jarak_antar_drop_batch_km', 'kemasan_tambahan_per_order', 'margin_barang_referensi', 'target_contribution_per_order', 'voucher_rata2_per_order'], 0 berubah, sheet baru ['T10_BEP_Basket', 'T9_Opsi_Keputusan']",
+   "status": "FAIL",
+   "catatan": "parameter bersama identik -> angka Q1-Q6 tidak berubah; tapi T10_BEP_Basket (margin barang) & jarak_antar_drop_batch_km=1 (Q6 Ida memakai detour 0,5 km) tidak dipakai",
+   "test": "test_B13_workbook_v2_vs_v22"
+  },
+  {
+   "id": "B14",
+   "klaim": "Semua file data kiriman dihasilkan ulang oleh run_all.py",
+   "expected": "0 file yatim",
+   "aktual": "7 file tanpa kode pembuat: ['data/model/dataset_model_order.csv', 'data/model/kamus_data_model.csv', 'data/model/kpi_definisi.csv', 'data/model/manifest_split.json', 'data/model/permintaan_harian_cabang.csv', 'data/model/preprocessor.json', 'data/model/test_ids_beku.txt']",
+   "status": "FAIL",
+   "catatan": "data/model/* (split 70/30, jumlah_item, target_eta) tidak punya skrip; split beda dari dataset_fitur_target (80/20)",
+   "test": "test_B14_data_model_bisa_direproduksi"
+  },
+  {
+   "id": "B15",
+   "klaim": "Log sintetis memakai parameter waktu_tetap_per_antaran_menit=15 dari model",
+   "expected": "waktu non-perjalanan rata2 15 menit",
+   "aktual": "variabel `fixed` dibuat tapi muncul 1x (tidak dipakai); waktu non-perjalanan = U(2,8)+U(3,10) = 11,5 menit (gagal: 16,5)",
+   "status": "FAIL",
+   "catatan": "synth_orders.py:50 vs 55-58; kapasitas di log sintetis tidak konsisten dgn model biaya",
+   "test": "test_B15_waktu_tetap_generator_vs_model"
+  },
+  {
+   "id": "B16",
+   "klaim": "README: dua kali jalan dari nol, hasil identik; angka_kunci.json sama dengan kiriman",
+   "expected": "identik",
+   "aktual": "run1 vs run2 39/39 byte-identik; angka_kunci: IDENTIK (setelah CRLF->LF)",
+   "status": "PASS",
+   "catatan": "",
+   "test": "test_B16_klaim_readme_identik_dua_run"
+  },
+  {
+   "id": "B17",
+   "klaim": "Notebook kiriman sudah dijalankan sukses (output tersimpan)",
+   "expected": "0 error",
+   "aktual": "29 sel kode, 3 error tersimpan: [\"ModuleNotFoundError: No module named 'src'\"]",
+   "status": "FAIL",
+   "catatan": "sel pertama gagal 'No module named src' di Colab; 26 sel 'aborted'. run_all.py lokal tetap jalan",
+   "test": "test_B17_notebook_tereksekusi"
+  }
+ ]
+}

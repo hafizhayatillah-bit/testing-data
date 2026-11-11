@@ -1,0 +1,823 @@
+{
+ "label": "DATA SINTETIS / ASUMSI, bukan data lapangan",
+ "python": "3.12.6 (tags/v3.12.6:a4a2d2b, Sep  6 2024, 20:11:23) [MSC v.1940 64 bit (AMD64)]",
+ "run1": {
+  "run": 1,
+  "returncode": 0,
+  "detik": 7.85,
+  "n_file_dihapus_sebelum": 38,
+  "n_file_dihasilkan": 39,
+  "warnings": [
+   "<sandbox>\\ida_copy\\src\\synth_orders.py:37: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.",
+   "<sandbox>\\ida_copy\\src\\s02_assessing_cleaning.py:118: Pandas4Warning: Series.dt.dayofweek is deprecated and will be removed in a future version. Use Series.dt.day_of_week instead.",
+   "<sandbox>\\ida_copy\\src\\s04_analisis.py:245: ResourceWarning: unclosed file <_io.TextIOWrapper name='<sandbox>\\\\ida_copy\\\\output\\\\tabel\\\\angka_kunci.json' mode='w' encoding='cp1252'>",
+   "ResourceWarning: Enable tracemalloc to get the object allocation traceback"
+  ],
+  "stderr_tail": "<sandbox>\\ida_copy\\src\\synth_orders.py:37: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.\n  tgl = tgl.where(tgl.dayofweek != 6, tgl + pd.Timedelta(days=1))\n<sandbox>\\ida_copy\\src\\s02_assessing_cleaning.py:118: Pandas4Warning: Series.dt.dayofweek is deprecated and will be removed in a future version. Use Series.dt.day_of_week instead.\n  df[\"hari_minggu\"] = df[\"ditugaskan_at\"].dt.dayofweek       # 0=Senin\n<sandbox>\\ida_copy\\src\\s04_analisis.py:245: ResourceWarning: unclosed file <_io.TextIOWrapper name='<sandbox>\\\\ida_copy\\\\output\\\\tabel\\\\angka_kunci.json' mode='w' encoding='cp1252'>\n  json.dump(K, open(OUT_T / \"angka_kunci.json\", \"w\"), indent=1, ensure_ascii=False, default=float)\nResourceWarning: Enable tracemalloc to get the object allocation traceback\n"
+ },
+ "run2": {
+  "run": 2,
+  "returncode": 0,
+  "detik": 7.67,
+  "n_file_dihapus_sebelum": 38,
+  "n_file_dihasilkan": 39,
+  "warnings": [
+   "<sandbox>\\ida_copy\\src\\synth_orders.py:37: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.",
+   "<sandbox>\\ida_copy\\src\\s02_assessing_cleaning.py:118: Pandas4Warning: Series.dt.dayofweek is deprecated and will be removed in a future version. Use Series.dt.day_of_week instead.",
+   "<sandbox>\\ida_copy\\src\\s04_analisis.py:245: ResourceWarning: unclosed file <_io.TextIOWrapper name='<sandbox>\\\\ida_copy\\\\output\\\\tabel\\\\angka_kunci.json' mode='w' encoding='cp1252'>",
+   "ResourceWarning: Enable tracemalloc to get the object allocation traceback"
+  ],
+  "stderr_tail": "<sandbox>\\ida_copy\\src\\synth_orders.py:37: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.\n  tgl = tgl.where(tgl.dayofweek != 6, tgl + pd.Timedelta(days=1))\n<sandbox>\\ida_copy\\src\\s02_assessing_cleaning.py:118: Pandas4Warning: Series.dt.dayofweek is deprecated and will be removed in a future version. Use Series.dt.day_of_week instead.\n  df[\"hari_minggu\"] = df[\"ditugaskan_at\"].dt.dayofweek       # 0=Senin\n<sandbox>\\ida_copy\\src\\s04_analisis.py:245: ResourceWarning: unclosed file <_io.TextIOWrapper name='<sandbox>\\\\ida_copy\\\\output\\\\tabel\\\\angka_kunci.json' mode='w' encoding='cp1252'>\n  json.dump(K, open(OUT_T / \"angka_kunci.json\", \"w\"), indent=1, ensure_ascii=False, default=float)\nResourceWarning: Enable tracemalloc to get the object allocation traceback\n"
+ },
+ "run1_vs_run2": [
+  {
+   "file": "data/clean/dataset_fitur_target.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/clean/grid_jarak_hasil.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/clean/kamus_data.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/clean/motor_klaster_bersih.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/clean/order_log_bersih.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/clean/parameter_model_bersih.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/Draft_DS_Kurir_v2.xlsx",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/grid_jarak_excel_raw.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/inventaris_sheet.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/klaster_ringkasan_raw.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/motor_klaster_raw.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/order_log_sintetis_kebenaran_uji.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/order_log_sintetis_raw.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/output_tidy_excel_raw.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/parameter_model_raw.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/pembanding_harga_raw.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/sebaran_jarak_excel_raw.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/sebaran_jarak_ringkas_raw.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/skenario_t6_excel_raw.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/sumber_data_sekunder_raw.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/target_kurir_excel_raw.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/tornado_excel_raw.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/grafik/g1_kantong_2m_dan_ongkir_vs_jarak.png",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/grafik/g3_penghasilan_kurir_vs_umk.png",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/grafik/g4_tornado_sensitivitas.png",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/grafik/g5_robustness_asumsi_pembanding.png",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/grafik/g6_opsi_kebijakan.png",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/grafik/g7_kualitas_data_mentah.png",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/tabel/angka_kunci.json",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/tabel/cek_akurasi.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/tabel/cek_akurasi_data_publik.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/tabel/log_pembersihan.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/tabel/profil_data_mentah.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/tabel/q1_amplop_upah_per_jarak.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/tabel/q2_penghasilan_kurir_vs_umk.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/tabel/q3_tornado.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/tabel/q4_robustness_asumsi_pembanding.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/tabel/q5_opsi_kebijakan.csv",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/tabel/q6_batching_ilustratif.csv",
+   "sama": true,
+   "hanya_di": ""
+  }
+ ],
+ "run1_vs_kiriman_ida": [
+  {
+   "file": "data/clean/dataset_fitur_target.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/clean/grid_jarak_hasil.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/clean/kamus_data.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/clean/motor_klaster_bersih.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/clean/order_log_bersih.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/clean/parameter_model_bersih.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/model/dataset_model_order.csv",
+   "sama": false,
+   "hanya_di": "kanan"
+  },
+  {
+   "file": "data/model/kamus_data_model.csv",
+   "sama": false,
+   "hanya_di": "kanan"
+  },
+  {
+   "file": "data/model/kpi_definisi.csv",
+   "sama": false,
+   "hanya_di": "kanan"
+  },
+  {
+   "file": "data/model/manifest_split.json",
+   "sama": false,
+   "hanya_di": "kanan"
+  },
+  {
+   "file": "data/model/permintaan_harian_cabang.csv",
+   "sama": false,
+   "hanya_di": "kanan"
+  },
+  {
+   "file": "data/model/preprocessor.json",
+   "sama": false,
+   "hanya_di": "kanan"
+  },
+  {
+   "file": "data/model/test_ids_beku.txt",
+   "sama": false,
+   "hanya_di": "kanan"
+  },
+  {
+   "file": "data/raw/Draft_DS_Kurir_v2.xlsx",
+   "sama": true,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/grid_jarak_excel_raw.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/inventaris_sheet.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/klaster_ringkasan_raw.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/motor_klaster_raw.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/order_log_sintetis_kebenaran_uji.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/order_log_sintetis_raw.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/output_tidy_excel_raw.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/parameter_model_raw.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/pembanding_harga_raw.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/sebaran_jarak_excel_raw.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/sebaran_jarak_ringkas_raw.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/skenario_t6_excel_raw.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/sumber_data_sekunder_raw.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/target_kurir_excel_raw.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "data/raw/tornado_excel_raw.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/grafik/g1_kantong_2m_dan_ongkir_vs_jarak.png",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/grafik/g3_penghasilan_kurir_vs_umk.png",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/grafik/g4_tornado_sensitivitas.png",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/grafik/g5_robustness_asumsi_pembanding.png",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/grafik/g6_opsi_kebijakan.png",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/grafik/g7_kualitas_data_mentah.png",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/tabel/angka_kunci.json",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/tabel/cek_akurasi.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/tabel/cek_akurasi_data_publik.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/tabel/log_pembersihan.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/tabel/profil_data_mentah.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/tabel/q1_amplop_upah_per_jarak.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/tabel/q2_penghasilan_kurir_vs_umk.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/tabel/q3_tornado.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/tabel/q4_robustness_asumsi_pembanding.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/tabel/q5_opsi_kebijakan.csv",
+   "sama": false,
+   "hanya_di": ""
+  },
+  {
+   "file": "output/tabel/q6_batching_ilustratif.csv",
+   "sama": false,
+   "hanya_di": ""
+  }
+ ],
+ "run1_vs_kiriman_ida_isi": [
+  {
+   "file": "data/raw/Draft_DS_Kurir_v2.xlsx",
+   "status": "BINER",
+   "detail": "byte sama"
+  },
+  {
+   "file": "data/raw/grid_jarak_excel_raw.csv",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "data/raw/inventaris_sheet.csv",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "data/raw/klaster_ringkasan_raw.csv",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "data/raw/motor_klaster_raw.csv",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "data/raw/order_log_sintetis_kebenaran_uji.csv",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "data/raw/order_log_sintetis_raw.csv",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "data/raw/output_tidy_excel_raw.csv",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "data/raw/parameter_model_raw.csv",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "data/raw/pembanding_harga_raw.csv",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "data/raw/sebaran_jarak_excel_raw.csv",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "data/raw/sebaran_jarak_ringkas_raw.csv",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "data/raw/skenario_t6_excel_raw.csv",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "data/raw/sumber_data_sekunder_raw.csv",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "data/raw/target_kurir_excel_raw.csv",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "data/raw/tornado_excel_raw.csv",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "data/clean/dataset_fitur_target.csv",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "data/clean/grid_jarak_hasil.csv",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "data/clean/kamus_data.csv",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "data/clean/motor_klaster_bersih.csv",
+   "status": "BEDA ISI",
+   "detail": "selisih numerik maks 5.68e-14; kolom non-numerik beda: []"
+  },
+  {
+   "file": "data/clean/order_log_bersih.csv",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "data/clean/parameter_model_bersih.csv",
+   "status": "BEDA ISI",
+   "detail": "selisih numerik maks 1.11e-16; kolom non-numerik beda: []"
+  },
+  {
+   "file": "data/model/dataset_model_order.csv",
+   "status": "TIDAK DIHASILKAN pipeline",
+   "detail": "ada di kiriman Ida, tidak ada kode yang membuatnya"
+  },
+  {
+   "file": "data/model/kamus_data_model.csv",
+   "status": "TIDAK DIHASILKAN pipeline",
+   "detail": "ada di kiriman Ida, tidak ada kode yang membuatnya"
+  },
+  {
+   "file": "data/model/kpi_definisi.csv",
+   "status": "TIDAK DIHASILKAN pipeline",
+   "detail": "ada di kiriman Ida, tidak ada kode yang membuatnya"
+  },
+  {
+   "file": "data/model/manifest_split.json",
+   "status": "TIDAK DIHASILKAN pipeline",
+   "detail": "ada di kiriman Ida, tidak ada kode yang membuatnya"
+  },
+  {
+   "file": "data/model/permintaan_harian_cabang.csv",
+   "status": "TIDAK DIHASILKAN pipeline",
+   "detail": "ada di kiriman Ida, tidak ada kode yang membuatnya"
+  },
+  {
+   "file": "data/model/preprocessor.json",
+   "status": "TIDAK DIHASILKAN pipeline",
+   "detail": "ada di kiriman Ida, tidak ada kode yang membuatnya"
+  },
+  {
+   "file": "data/model/test_ids_beku.txt",
+   "status": "TIDAK DIHASILKAN pipeline",
+   "detail": "ada di kiriman Ida, tidak ada kode yang membuatnya"
+  },
+  {
+   "file": "output/tabel/angka_kunci.json",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "output/tabel/cek_akurasi.csv",
+   "status": "BEDA ISI",
+   "detail": "selisih numerik maks 0; kolom non-numerik beda: ['nilai']"
+  },
+  {
+   "file": "output/tabel/cek_akurasi_data_publik.csv",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "output/tabel/log_pembersihan.csv",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "output/tabel/profil_data_mentah.csv",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "output/tabel/q1_amplop_upah_per_jarak.csv",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "output/tabel/q2_penghasilan_kurir_vs_umk.csv",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "output/tabel/q3_tornado.csv",
+   "status": "BEDA ISI",
+   "detail": "selisih numerik maks 1.46e-11; kolom non-numerik beda: []"
+  },
+  {
+   "file": "output/tabel/q4_robustness_asumsi_pembanding.csv",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "output/tabel/q5_opsi_kebijakan.csv",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "output/tabel/q6_batching_ilustratif.csv",
+   "status": "IDENTIK (setelah CRLF->LF)",
+   "detail": ""
+  },
+  {
+   "file": "output/grafik/g1_kantong_2m_dan_ongkir_vs_jarak.png",
+   "status": "BINER",
+   "detail": "byte beda (wajar utk PNG beda versi matplotlib)"
+  },
+  {
+   "file": "output/grafik/g3_penghasilan_kurir_vs_umk.png",
+   "status": "BINER",
+   "detail": "byte beda (wajar utk PNG beda versi matplotlib)"
+  },
+  {
+   "file": "output/grafik/g4_tornado_sensitivitas.png",
+   "status": "BINER",
+   "detail": "byte beda (wajar utk PNG beda versi matplotlib)"
+  },
+  {
+   "file": "output/grafik/g5_robustness_asumsi_pembanding.png",
+   "status": "BINER",
+   "detail": "byte beda (wajar utk PNG beda versi matplotlib)"
+  },
+  {
+   "file": "output/grafik/g6_opsi_kebijakan.png",
+   "status": "BINER",
+   "detail": "byte beda (wajar utk PNG beda versi matplotlib)"
+  },
+  {
+   "file": "output/grafik/g7_kualitas_data_mentah.png",
+   "status": "BINER",
+   "detail": "byte beda (wajar utk PNG beda versi matplotlib)"
+  }
+ ],
+ "hashes_run1": {
+  "data/raw/Draft_DS_Kurir_v2.xlsx": "79ac06db1b544eb7f65b3f0f77daa3b8bb285005e02a443a1bca6b2433fdf320",
+  "data/raw/grid_jarak_excel_raw.csv": "1c11e44a94d82b5d408c4632256d53bc9952d1ebc664fdc6064aa07c93f8e0f4",
+  "data/raw/inventaris_sheet.csv": "364503fa92cb41850484a5e6f7f1fc92ba90e845044233d3fb624c9279e6e8db",
+  "data/raw/klaster_ringkasan_raw.csv": "684b9285ebe06275651e6ad9fd82d4141c890dc924701040b627b8863b10705e",
+  "data/raw/motor_klaster_raw.csv": "f8d6ced6a2fecf5a60f2622f5a30a66e1c1a400291f51eace392c11727766e89",
+  "data/raw/order_log_sintetis_kebenaran_uji.csv": "25b28be5c3cb88589c318530fb172eb86185f455748208d0ad16c0e0a3dfa118",
+  "data/raw/order_log_sintetis_raw.csv": "5cd154c15bf67b51af06b8ac2b6c8f4c9765fdc01ed54ad40a5741b898f0fb6f",
+  "data/raw/output_tidy_excel_raw.csv": "52b0cce013e67bb0f66951dc2eeeff4fafc5c3bc61d32a596e8aa3ddea0089ab",
+  "data/raw/parameter_model_raw.csv": "3b7a72164592ab3ac66e132b65cbef98c96dee95bbe26222b000c9a4460a9b41",
+  "data/raw/pembanding_harga_raw.csv": "024f28a1cebe8a884274742c9dbd791b0facc6fcab5207cfdd98a48b6be113f9",
+  "data/raw/sebaran_jarak_excel_raw.csv": "9465896ba91f5968a66ab9c697011675560bd3bec8f3cf3329a0d0bef17fd9fc",
+  "data/raw/sebaran_jarak_ringkas_raw.csv": "68c6617aff25f1f771ab3cfae976159393016987e99910a32b251d85741a7131",
+  "data/raw/skenario_t6_excel_raw.csv": "3ec87727d0b61e107fffb93be973cfaa6795966783b7139c5a872b63bac8b5b3",
+  "data/raw/sumber_data_sekunder_raw.csv": "1d0cc1762be268ced35d39727de412a2d04900def6040566981628a2e86fa9db",
+  "data/raw/target_kurir_excel_raw.csv": "a416ff0ede94326367d269115dd36503c3fc5cf43a0cbaadf431bb7ecab3ca56",
+  "data/raw/tornado_excel_raw.csv": "a1665d6421c2271867f7ba3758a4469451fad98bc0e3be59aba64955b7a90d71",
+  "data/clean/dataset_fitur_target.csv": "bd461b406a49522ea9c5c33fe34c4bedbc1356919df1fa053befaf4e3de0aa63",
+  "data/clean/grid_jarak_hasil.csv": "7f9c839369211991a71c21ef5a05009999044285b79ba221ecd405a88e57156d",
+  "data/clean/kamus_data.csv": "24a242638720b650a9ac5d5a4d1bad46a219b8ae66352f303dd3c28f06bd50d1",
+  "data/clean/motor_klaster_bersih.csv": "f8d6ced6a2fecf5a60f2622f5a30a66e1c1a400291f51eace392c11727766e89",
+  "data/clean/order_log_bersih.csv": "5522e56fd0e3277fe0e26af7ea6c14c7d60277b3acebeb4e196dd4c366668ced",
+  "data/clean/parameter_model_bersih.csv": "5bfd33ab688c87b4131e97b3b9829f0a48596e43b4b4a8b1b90d7b0e16a95d37",
+  "output/tabel/angka_kunci.json": "9aa31a32dc28f83e568b5f51e8125ae6a581d7282bb6082943fec444d350091c",
+  "output/tabel/cek_akurasi.csv": "1d32bac9ee06bbba82a9a2d1750cfd7c386579012773fdc3262291b8116ea244",
+  "output/tabel/cek_akurasi_data_publik.csv": "3a907d59d98708289499045e41a46426669ee821a493a22fda0cc6436e0640e1",
+  "output/tabel/log_pembersihan.csv": "b084c37e31f9f2f40356c503127dd80b0200df504b4e5593fa6b162f9212b4dd",
+  "output/tabel/profil_data_mentah.csv": "5e43b3337db7cd883c48923c03482d43f3bd3a1d42f6bc46e34e2e6f1d7db87f",
+  "output/tabel/q1_amplop_upah_per_jarak.csv": "61542a20e0de6607df9718e34c85e71a02d4e30456cee3b45af107ddfa064332",
+  "output/tabel/q2_penghasilan_kurir_vs_umk.csv": "428d2b670230ba9314c4fe56762fa348febd43503d8fcd52651db3106569af2d",
+  "output/tabel/q3_tornado.csv": "159ee31964d3319fce4f7aa8fe856820f0707a828fafec501622e3821e290fe5",
+  "output/tabel/q4_robustness_asumsi_pembanding.csv": "8649bb14c19a9a19b5c289cb7ae4b0ec38b5b7ebf0aa27b9a57c1955d59b38e1",
+  "output/tabel/q5_opsi_kebijakan.csv": "1e8cc75ca7fa622f517fa82066cc4ed50993d76ce93e7fb1165c65f22625f51a",
+  "output/tabel/q6_batching_ilustratif.csv": "d18e880a96f296cbba1c00a8e10c896f4b391bebddb3347b8eabdf96de5526cb",
+  "output/grafik/g1_kantong_2m_dan_ongkir_vs_jarak.png": "1f6e680f0b1d0c99b5db5c08e28e335b3a3785232bf8e63d2009f1e5791fadb6",
+  "output/grafik/g3_penghasilan_kurir_vs_umk.png": "f6196db982656a572f3d06344456d618f9b64529a2405fe4103b2fd57e5deb97",
+  "output/grafik/g4_tornado_sensitivitas.png": "837ed42cd143d2de5573267a76bff4215aaa1a4b6f11e7a5256d75b184c37f9e",
+  "output/grafik/g5_robustness_asumsi_pembanding.png": "c0d0968635792dc179987e0380980b52ed82c4d5a8f565d8c64a5aff375fb606",
+  "output/grafik/g6_opsi_kebijakan.png": "cd11660fc7b76025bc9e7d8d70d3a5eb6683a7e932e74cb63e308686efe69cd9",
+  "output/grafik/g7_kualitas_data_mentah.png": "188d7f2e65c2ac8a22500e5f0da5d755d8c0136dfc605b15cae7784b287d718d"
+ },
+ "hashes_run2": {
+  "data/raw/Draft_DS_Kurir_v2.xlsx": "79ac06db1b544eb7f65b3f0f77daa3b8bb285005e02a443a1bca6b2433fdf320",
+  "data/raw/grid_jarak_excel_raw.csv": "1c11e44a94d82b5d408c4632256d53bc9952d1ebc664fdc6064aa07c93f8e0f4",
+  "data/raw/inventaris_sheet.csv": "364503fa92cb41850484a5e6f7f1fc92ba90e845044233d3fb624c9279e6e8db",
+  "data/raw/klaster_ringkasan_raw.csv": "684b9285ebe06275651e6ad9fd82d4141c890dc924701040b627b8863b10705e",
+  "data/raw/motor_klaster_raw.csv": "f8d6ced6a2fecf5a60f2622f5a30a66e1c1a400291f51eace392c11727766e89",
+  "data/raw/order_log_sintetis_kebenaran_uji.csv": "25b28be5c3cb88589c318530fb172eb86185f455748208d0ad16c0e0a3dfa118",
+  "data/raw/order_log_sintetis_raw.csv": "5cd154c15bf67b51af06b8ac2b6c8f4c9765fdc01ed54ad40a5741b898f0fb6f",
+  "data/raw/output_tidy_excel_raw.csv": "52b0cce013e67bb0f66951dc2eeeff4fafc5c3bc61d32a596e8aa3ddea0089ab",
+  "data/raw/parameter_model_raw.csv": "3b7a72164592ab3ac66e132b65cbef98c96dee95bbe26222b000c9a4460a9b41",
+  "data/raw/pembanding_harga_raw.csv": "024f28a1cebe8a884274742c9dbd791b0facc6fcab5207cfdd98a48b6be113f9",
+  "data/raw/sebaran_jarak_excel_raw.csv": "9465896ba91f5968a66ab9c697011675560bd3bec8f3cf3329a0d0bef17fd9fc",
+  "data/raw/sebaran_jarak_ringkas_raw.csv": "68c6617aff25f1f771ab3cfae976159393016987e99910a32b251d85741a7131",
+  "data/raw/skenario_t6_excel_raw.csv": "3ec87727d0b61e107fffb93be973cfaa6795966783b7139c5a872b63bac8b5b3",
+  "data/raw/sumber_data_sekunder_raw.csv": "1d0cc1762be268ced35d39727de412a2d04900def6040566981628a2e86fa9db",
+  "data/raw/target_kurir_excel_raw.csv": "a416ff0ede94326367d269115dd36503c3fc5cf43a0cbaadf431bb7ecab3ca56",
+  "data/raw/tornado_excel_raw.csv": "a1665d6421c2271867f7ba3758a4469451fad98bc0e3be59aba64955b7a90d71",
+  "data/clean/dataset_fitur_target.csv": "bd461b406a49522ea9c5c33fe34c4bedbc1356919df1fa053befaf4e3de0aa63",
+  "data/clean/grid_jarak_hasil.csv": "7f9c839369211991a71c21ef5a05009999044285b79ba221ecd405a88e57156d",
+  "data/clean/kamus_data.csv": "24a242638720b650a9ac5d5a4d1bad46a219b8ae66352f303dd3c28f06bd50d1",
+  "data/clean/motor_klaster_bersih.csv": "f8d6ced6a2fecf5a60f2622f5a30a66e1c1a400291f51eace392c11727766e89",
+  "data/clean/order_log_bersih.csv": "5522e56fd0e3277fe0e26af7ea6c14c7d60277b3acebeb4e196dd4c366668ced",
+  "data/clean/parameter_model_bersih.csv": "5bfd33ab688c87b4131e97b3b9829f0a48596e43b4b4a8b1b90d7b0e16a95d37",
+  "output/tabel/angka_kunci.json": "9aa31a32dc28f83e568b5f51e8125ae6a581d7282bb6082943fec444d350091c",
+  "output/tabel/cek_akurasi.csv": "1d32bac9ee06bbba82a9a2d1750cfd7c386579012773fdc3262291b8116ea244",
+  "output/tabel/cek_akurasi_data_publik.csv": "3a907d59d98708289499045e41a46426669ee821a493a22fda0cc6436e0640e1",
+  "output/tabel/log_pembersihan.csv": "b084c37e31f9f2f40356c503127dd80b0200df504b4e5593fa6b162f9212b4dd",
+  "output/tabel/profil_data_mentah.csv": "5e43b3337db7cd883c48923c03482d43f3bd3a1d42f6bc46e34e2e6f1d7db87f",
+  "output/tabel/q1_amplop_upah_per_jarak.csv": "61542a20e0de6607df9718e34c85e71a02d4e30456cee3b45af107ddfa064332",
+  "output/tabel/q2_penghasilan_kurir_vs_umk.csv": "428d2b670230ba9314c4fe56762fa348febd43503d8fcd52651db3106569af2d",
+  "output/tabel/q3_tornado.csv": "159ee31964d3319fce4f7aa8fe856820f0707a828fafec501622e3821e290fe5",
+  "output/tabel/q4_robustness_asumsi_pembanding.csv": "8649bb14c19a9a19b5c289cb7ae4b0ec38b5b7ebf0aa27b9a57c1955d59b38e1",
+  "output/tabel/q5_opsi_kebijakan.csv": "1e8cc75ca7fa622f517fa82066cc4ed50993d76ce93e7fb1165c65f22625f51a",
+  "output/tabel/q6_batching_ilustratif.csv": "d18e880a96f296cbba1c00a8e10c896f4b391bebddb3347b8eabdf96de5526cb",
+  "output/grafik/g1_kantong_2m_dan_ongkir_vs_jarak.png": "1f6e680f0b1d0c99b5db5c08e28e335b3a3785232bf8e63d2009f1e5791fadb6",
+  "output/grafik/g3_penghasilan_kurir_vs_umk.png": "f6196db982656a572f3d06344456d618f9b64529a2405fe4103b2fd57e5deb97",
+  "output/grafik/g4_tornado_sensitivitas.png": "837ed42cd143d2de5573267a76bff4215aaa1a4b6f11e7a5256d75b184c37f9e",
+  "output/grafik/g5_robustness_asumsi_pembanding.png": "c0d0968635792dc179987e0380980b52ed82c4d5a8f565d8c64a5aff375fb606",
+  "output/grafik/g6_opsi_kebijakan.png": "cd11660fc7b76025bc9e7d8d70d3a5eb6683a7e932e74cb63e308686efe69cd9",
+  "output/grafik/g7_kualitas_data_mentah.png": "188d7f2e65c2ac8a22500e5f0da5d755d8c0136dfc605b15cae7784b287d718d"
+ },
+ "hashes_kiriman_ida": {
+  "data/raw/Draft_DS_Kurir_v2.xlsx": "79ac06db1b544eb7f65b3f0f77daa3b8bb285005e02a443a1bca6b2433fdf320",
+  "data/raw/grid_jarak_excel_raw.csv": "f0da12aa33a16f3bd51f3bd17cb2a7a86c161acbadd9db4b984d43e590b6ad3e",
+  "data/raw/inventaris_sheet.csv": "78a229882964807295a379a97f0574b84ecfc6c0a248b4bedaeb3677f4a2217b",
+  "data/raw/klaster_ringkasan_raw.csv": "72e7f152546075217fa7451010b28067b20cd6ee881fc900628a4dd04cf4a729",
+  "data/raw/motor_klaster_raw.csv": "bace62bba3521bbdd41fb4de53483f4b38984b1628d4bebcbaa599cb8a80a6d0",
+  "data/raw/order_log_sintetis_kebenaran_uji.csv": "14a5f4df5645ed7d14345f277b5c2cf0b890537ea03dfa5fc4c64cdc3fe4c261",
+  "data/raw/order_log_sintetis_raw.csv": "570dfeaec96053c252eae2bd4867db39a972769a3f4dcd00f561387c0179caff",
+  "data/raw/output_tidy_excel_raw.csv": "894fed5fd937d3bc3efbd73e157e07fae921bea9d254509333b310ffaf64b2c8",
+  "data/raw/parameter_model_raw.csv": "ea868799c03a18956d4e8b5ea06b9056697f3d6e8a6ac6d34f47cf398199cfe5",
+  "data/raw/pembanding_harga_raw.csv": "c84b8685d1298ca2f3a11856cc882fbfc67e12b0590aa4d8759fe531479fb650",
+  "data/raw/sebaran_jarak_excel_raw.csv": "0425298a3b8ae66bf4906f0238d99d648ac3e60c03d52d96ead15db09fb9c02a",
+  "data/raw/sebaran_jarak_ringkas_raw.csv": "db6612d9f083d7a5a8f33fa9dc39ae1510311bec411baa7a055761b4320d9122",
+  "data/raw/skenario_t6_excel_raw.csv": "f39bd80b99dda28d5cbb194dd5413354bd16a7acc73972e8bdac8811a5715618",
+  "data/raw/sumber_data_sekunder_raw.csv": "ec5cbad4e89c9fb60e9587a376fcc10a02fcaded6740bca6068ded5ed0b72f40",
+  "data/raw/target_kurir_excel_raw.csv": "9b83f5aafeaa2dcd79a09b307f7e233f7233e995b321004265989f685671e143",
+  "data/raw/tornado_excel_raw.csv": "adeb5aa06219aee3072dfe00710a053b9f00daa05cf8f845c2953439b8e41cce",
+  "data/clean/dataset_fitur_target.csv": "af8017da7253ff02fe2224c787cff194471e447f8ca48da1a6ecf7b4c8705b99",
+  "data/clean/grid_jarak_hasil.csv": "6c276a0ff1c373479022f72e8cf170305aceee2415a100c560119743432d602e",
+  "data/clean/kamus_data.csv": "5f771ccac1e44428fa225b9991d6439c2ef35a7c9b9a9158af0fc9c5cbe4cedf",
+  "data/clean/motor_klaster_bersih.csv": "f059334ddecf62a5602cc08c6f966faa7f8769bf5d06d106472a98a53223a86c",
+  "data/clean/order_log_bersih.csv": "1dac054ebd37bb85398052f5d6e6d18a99e58eb1f0def2ddc9f580deeb24eb6e",
+  "data/clean/parameter_model_bersih.csv": "94d711f56adc924956ac95ba80b812da83a24a03037e1ca85129d09e92f6d97b",
+  "data/model/dataset_model_order.csv": "51b5b7cf74e71cfb8bc029f09c52b85ed668cdeb51f28e189923bad0ddcce67d",
+  "data/model/kamus_data_model.csv": "19bc9001d828c962c2cd9d30196ebf90f653bcc97a70dad9e43f86d713b3308c",
+  "data/model/kpi_definisi.csv": "548c53ee3515370a8e0ed94be9003ec14b74848020dafa7e3e9c26770fe14b8c",
+  "data/model/manifest_split.json": "0eaf04ebd0a7e189544ab4f925e1b15c412d43c4ffe8d29e43343af758e1e412",
+  "data/model/permintaan_harian_cabang.csv": "579a257fdb4ad1591c5353f1af951be4d7af31e4d526866ff30b9ec5b23e7064",
+  "data/model/preprocessor.json": "097d1bb50f709b41ad3cda1dddbccde9c1b62e7ac7c142e7a47ced4b23a04086",
+  "data/model/test_ids_beku.txt": "34a05a8ddfa4a4d994f42c1ce25642adb959b4690d508bb83770364106736e0f",
+  "output/tabel/angka_kunci.json": "5e62128b8dac0e6fee6d59709d1dcdbce85559f57c5f99000fbf8e38c2a778c6",
+  "output/tabel/cek_akurasi.csv": "d5fddcfb97f5f78d031390f9fd3cd681106069bdf4865a6432d1dd69f9e3067f",
+  "output/tabel/cek_akurasi_data_publik.csv": "d6006d1a43aeb79b60ed65266c5a152c7b733462d11e4f89ce80b964b6a31756",
+  "output/tabel/log_pembersihan.csv": "4b43f32d2074769b74037e02eab64562cf0cda16b5e95411dd8875ff90f789aa",
+  "output/tabel/profil_data_mentah.csv": "0412c68eb2167fe0864d23342e9fc841eaaa9f079338bda14e6dad64ae1b7c34",
+  "output/tabel/q1_amplop_upah_per_jarak.csv": "34d2e6d520e21978ebf34583c8de8f710b0324202620b7739145ecefac36d12a",
+  "output/tabel/q2_penghasilan_kurir_vs_umk.csv": "f62cea7d05996484436199c2ee219c2edb6dae91d4eb880e743e2b2ee88f618c",
+  "output/tabel/q3_tornado.csv": "34d4f9c444bd4152a081df56a1a9dfd80c4c257f8b10ac94556de6c826bdeb63",
+  "output/tabel/q4_robustness_asumsi_pembanding.csv": "699656557c9abd1a0072127e54a3423268efaa2c34182636d6a536584b035eb8",
+  "output/tabel/q5_opsi_kebijakan.csv": "87c3aa3f5308e33dc176464100f513a70ed7d93c840faa722206a45c3a463909",
+  "output/tabel/q6_batching_ilustratif.csv": "ddafafaea60ad43ae11c0d0b3e226aee3527edc473b920b6b636f7b092ba4589",
+  "output/grafik/g1_kantong_2m_dan_ongkir_vs_jarak.png": "39781bd6f8c3ff915faa5061046c328dc1edfcd516e69b888a0b82d13e3b6705",
+  "output/grafik/g3_penghasilan_kurir_vs_umk.png": "6deaa67d2cf1a61ff87eac0f80583da14c2987ca4b8d689a11832080e737faa6",
+  "output/grafik/g4_tornado_sensitivitas.png": "e7e34a565ee0381086e99f8f677dfaf942af35828f1d7155813b253ec7f92c2a",
+  "output/grafik/g5_robustness_asumsi_pembanding.png": "02175aa2490704da5d1cdc91fbaa0a63ca02261187d1b4116c0c20ecdefa1574",
+  "output/grafik/g6_opsi_kebijakan.png": "e56203ed2cc7f5bd1f12c102f6dc029603b1717cdd4923a753004eed51d3ef07",
+  "output/grafik/g7_kualitas_data_mentah.png": "818fd33d7fa449ae023465515857bebb0d186ac40d059b8733e6783083f1478c"
+ }
+}
